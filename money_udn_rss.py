@@ -1,5 +1,5 @@
 import feedparser
-from read_url import fetch
+from money_udn_url import fetch
 import csv
 import argparse
 
@@ -15,7 +15,7 @@ def grab(csv_name, rss_url):
     # 遍歷所有的條目，提取並打印URL
     for entry in feed.entries:
         #fetch(entry)
-        #print(entry.link)
+        print(entry.link)
         url_list.append(entry.link)
     print('rss中的url',str(url_list))
     for url in url_list:

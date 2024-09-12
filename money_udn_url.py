@@ -2,6 +2,8 @@ import requests
 from bs4 import BeautifulSoup
 import csv
 import argparse
+import dateutil.parser
+import dateutil.tz
 
 def fetch(url):
 
@@ -20,12 +22,17 @@ def fetch(url):
     output['Title'] = title.get_text()
 
     #抓取時間
-    time = soup.find('time')
-    output['Time'] = time.get_text()
-
+    time = soup.find('time').text
+    time_plus = str(time) + '+08:00'
+    time_turn = dateutil.parser.parse(time_plus).astimezone(dateutil.tz.UTC)
+    output['Time'] = str(time_turn)
+    
     #抓取作者
     author = soup.find('div',class_='article-body__info')
-    output['Author'] = author.get_text().strip()
+    author = author.get_text().strip()
+    output['Author'] = author
+    a = author.split('/')
+    print(a[0].strip())
 
     #刪除延伸閱讀
     decompose = soup.find('b',string='延伸閱讀')
