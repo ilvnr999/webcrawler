@@ -18,13 +18,16 @@ def grab(csv_name, rss_url):
         print(entry.link)
         url_list.append(entry.link)
     print('rss中的url',str(url_list))
+    
+    # 讀取內容
     for url in url_list:
         url_content.append(fetch(url))
-
+    # 讀取行名稱
     first_dict = url_content[0]
     for key in first_dict:
         fieldnames.append(key)
     print('column names',fieldnames)
+
     with open(csv_name, 'a', encoding='utf-8', newline='') as file_obj:
         writer = csv.DictWriter(file_obj, fieldnames=fieldnames)
         writer.writeheader()
