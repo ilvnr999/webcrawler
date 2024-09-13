@@ -5,6 +5,7 @@ import dateutil.parser
 import dateutil.tz
 
 def fetch(url):
+    print(url)
     # url = 'https://www.cna.com.tw/news/ait/202409120182.aspx'
     api_response = requests.post(
         "https://api.zyte.com/v1/extract",
@@ -31,7 +32,13 @@ def fetch(url):
     title = soup.find('h1').text
 
     # 抓取時間
-    time = soup.find('div',class_='updatetime').text
+    time = soup.find('div',class_='updatetime')
+    if not time :
+        time = soup.find('p',class_='article-time')
+    
+    time = time.get_text()  # 有問題
+    if '（' in str(time):
+        time = time.split('（')[0]
     time_plus = str(time) + '+08:00'
     time_turn = dateutil.parser.parse(time_plus).astimezone(dateutil.tz.UTC)
 
@@ -48,5 +55,5 @@ def fetch(url):
 
 
 if __name__ == '__main__':
-    url = 'https://feeds.feedburner.com/rsscna/finance'
-    print(fetch())
+    url = 'https://www.cna.com.tw/news/ait/202409120379.aspx'
+    print(fetch(url))
