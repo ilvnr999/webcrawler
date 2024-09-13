@@ -32,7 +32,6 @@ def fetch(url):
     author = author.get_text().strip()
     output['Author'] = author
     a = author.split('/')
-    print(a[0].strip())
 
     #刪除延伸閱讀
     decompose = soup.find('b',string='延伸閱讀')
