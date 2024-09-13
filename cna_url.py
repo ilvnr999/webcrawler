@@ -4,8 +4,8 @@ from base64 import b64decode
 import dateutil.parser
 import dateutil.tz
 
-def fatch():
-    url = 'https://www.cna.com.tw/news/ait/202409120182.aspx'
+def fetch(url):
+    # url = 'https://www.cna.com.tw/news/ait/202409120182.aspx'
     api_response = requests.post(
         "https://api.zyte.com/v1/extract",
         auth=("bbc1a2b309d74e21a8cc452e054e54d5", ""),
@@ -48,4 +48,5 @@ def fatch():
 
 
 if __name__ == '__main__':
-    print(fatch())
+    url = 'https://feeds.feedburner.com/rsscna/finance'
+    print(fetch())
