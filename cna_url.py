@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 from base64 import b64decode
 import dateutil.parser
 import dateutil.tz
+import re
 
 def fetch(url):
     print(url)
@@ -49,14 +50,20 @@ def fetch(url):
     time_plus = str(time) + '+08:00'
     time_turn = dateutil.parser.parse(time_plus).astimezone(dateutil.tz.UTC)
 
-    # 抓取作者
-    author = soup.find('')
+    
 
     # 抓取內文
     text = soup.find('div', class_='paragraph')  # 抓取文章區域
     all_p = text.find_all('p')
-    content = ' '.join([p.get_text() for p in all_p])
-         
+    p_list = [p.get_text() for p in all_p]
+    content = ' '.join(p_list)
+    
+    # 抓取作者
+    pattern = r'(記者|編輯|譯者|核稿)[：:]?\s*([\u4e00-\u9fa5]{2,3})'
+    matches = re.findall(pattern, content)
+    # 只提取職位和人名
+    author = [' '.join(match) for match in matches]
+
 
     return {"source_id":source_id,
             "title":title,
