@@ -31,6 +31,10 @@ def fetch(url):
     source_id_last = str(url).split('/')[-1]
     source_id = source_id_last.split('.')[0]
 
+    # 中央社404狀態200
+    if '404' in soup.find('title').text:
+         return print('404')
+    
     # 抓取標題
     title = soup.find('h1').text
 
@@ -50,12 +54,9 @@ def fetch(url):
 
     # 抓取內文
     text = soup.find('div', class_='paragraph')  # 抓取文章區域
-    clean = text.find('div', class_='articlekeywordGroup')
-    if clean:
-        for element in clean.find_all_next():
-            element.decompose()
-        clean.decompose()
-    content = text.get_text()
+    all_p = text.find_all('p')
+    content = ' '.join([p.get_text() for p in all_p])
+         
 
     return {"source_id":source_id,
             "title":title,
