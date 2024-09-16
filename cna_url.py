@@ -59,8 +59,10 @@ def fetch(url):
     content = ' '.join(p_list)
     
     # 抓取作者
+    pattern1 = r'[（(](.*?)[）)]'  # 匹配括號中的內容
+    find_author = str(re.findall(pattern1,p_list[0])) + str(re.findall(pattern1,p_list[-1]))
     pattern = r'(記者|編輯|譯者|核稿)[：:]?\s*([\u4e00-\u9fa5]{2,3})'
-    matches = re.findall(pattern, content)
+    matches = re.findall(pattern, find_author)
     # 只提取職位和人名
     author = [' '.join(match) for match in matches]
 

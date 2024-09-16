@@ -13,7 +13,6 @@ def grab():
         url_list.append(entry.link)
     for entry in feed2.entries:
         url_list.append(entry.link)
-    # print(url_list)
     # 讀取url
     for url in tuple(url_list):
         print(fetch(url))
