@@ -15,9 +15,12 @@ def fetch(url):
             "httpResponseBody": True,
         },
     )
+    if api_response.status_code != 200:
+            print(f"Error: Received status code {api_response.status_code}")
+            return
+    
     http_response_body: bytes = b64decode(
         api_response.json()["httpResponseBody"])
-
 
     # responde = requests.get(url)    # 返回一個Response物件 通過此物件響應內容狀態碼標頭等訊息
     # html_content = responde.text    # 返回響應內容的字串型態
@@ -36,7 +39,7 @@ def fetch(url):
     if not time :
         time = soup.find('p',class_='article-time')
     
-    time = time.get_text()  # 有問題
+    time = time.get_text()  
     if '（' in str(time):
         time = time.split('（')[0]
     time_plus = str(time) + '+08:00'
@@ -46,7 +49,14 @@ def fetch(url):
     author = soup.find('')
 
     # 抓取內文
-    content = soup.find('div', class_='paragraph').text
+    text = soup.find('div', class_='paragraph')  # 抓取文章區域
+    clean = text.find('div', class_='articlekeywordGroup')
+    if clean:
+        for element in clean.find_all_next():
+            element.decompose()
+        clean.decompose()
+    content = text.get_text()
+
     return {"source_id":source_id,
             "title":title,
             "time":time_turn,
