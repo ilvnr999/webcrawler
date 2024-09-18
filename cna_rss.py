@@ -16,7 +16,7 @@ def grab():
     for a in url_list:
         print(a)  # 顯示url
     # 讀取url
-    for url in tuple(url_list):
+    for url in set(url_list):
         print(fetch(url))  
     
 if __name__ == '__main__':

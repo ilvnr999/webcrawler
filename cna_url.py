@@ -10,7 +10,7 @@ def fetch(url):
     # url = 'https://www.cna.com.tw/news/ait/202409120182.aspx'
     api_response = requests.post(
         "https://api.zyte.com/v1/extract",
-        auth=("bbc1a2b309d74e21a8cc452e054e54d5", ""),
+        auth=("{apikey}", ""),
         json={
             "url": url,
             "httpResponseBody": True,
@@ -19,19 +19,21 @@ def fetch(url):
     if api_response.status_code != 200:
             print(f"Error: Received status code {api_response.status_code}")
             return
-    
+    else:
+         print(api_response.status_code)
+
     http_response_body: bytes = b64decode(
         api_response.json()["httpResponseBody"])
 
     # responde = requests.get(url)    # 返回一個Response物件 通過此物件響應內容狀態碼標頭等訊息
     # html_content = responde.text    # 返回響應內容的字串型態
-    responde = http_response_body.decode("utf-8")   #將解碼後的二進制數據轉換為字符串（假設是 UTF-8 編碼）
-    soup = BeautifulSoup(responde, 'html5lib')      #透過解析器建立BeautifulSoup物件
+    responde = http_response_body.decode("utf-8")   # 將解碼後的二進制數據轉換為字符串（假設是 UTF-8 編碼）
+    soup = BeautifulSoup(responde, 'html5lib')      # 透過解析器建立BeautifulSoup物件
 
     # 取得ID
     url_split = str(url).split('/')
     url_num = url_split[-1].split('.')
-    source_id = url_split[-2] + url_num[0]
+    source_id = url_split[-2] + '/' + url_num[0]
     # 中央社404狀態200
     if '404' in soup.find('title').text:
          return print('404')
