@@ -64,10 +64,18 @@ def fetch(url):
         word = get_picture.get('alt')
         content = img + word + content
 
+    other_picture = []
     # 抓取其他照片
-    
-    
-    # 抓取作者
+    media = soup.find_all('div', class_='media')
+    if media:
+        for me in media:
+            img = me.find('img')
+            if img :
+                img_img = img.get('data-src')
+                img_word = img.get('alt')
+                other_picture.append(img_img+img_word)
+
+# 抓取作者
     pattern1 = r'[（(](.*?)[）)]'  # 匹配括號中的內容
     find_author = str(re.findall(pattern1,p_list[0])) + str(re.findall(pattern1,p_list[-1]))
     pattern = r'(記者|編輯|譯者|核稿)[：:]?\s*([\u4e00-\u9fa5]{2,3})'
@@ -80,9 +88,10 @@ def fetch(url):
             "title":title,
             "time":time_turn,
             "author":author,
-            "content":content}
+            "content":content,
+            "other_picture":other_picture}
 
 
 if __name__ == '__main__':
-    url = 'https://www.cna.com.tw/news/ait/202409130176.aspx'
+    url = 'https://www.cna.com.tw/news/afe/202409170209.aspx'
     print(fetch(url))
