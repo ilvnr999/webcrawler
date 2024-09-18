@@ -29,9 +29,9 @@ def fetch(url):
     soup = BeautifulSoup(responde, 'html5lib')      #透過解析器建立BeautifulSoup物件
 
     # 取得ID
-    source_id_last = str(url).split('/')[-1]
-    source_id = source_id_last.split('.')[0]
-
+    url_split = str(url).split('/')
+    url_num = url_split[-1].split('.')
+    source_id = url_split[-2] + url_num[0]
     # 中央社404狀態200
     if '404' in soup.find('title').text:
          return print('404')
@@ -50,13 +50,22 @@ def fetch(url):
     time_plus = str(time) + '+08:00'
     time_turn = dateutil.parser.parse(time_plus).astimezone(dateutil.tz.UTC)
 
-    
-
     # 抓取內文
     text = soup.find('div', class_='paragraph')  # 抓取文章區域
     all_p = text.find_all('p')
     p_list = [p.get_text() for p in all_p]
     content = ' '.join(p_list)
+
+    # 抓取文章頭
+    picture = soup.find('figure',class_='floatImg center')
+    if picture :
+        get_picture = picture.find('img')
+        img = get_picture.get('src')
+        word = get_picture.get('alt')
+        content = img + word + content
+
+    # 抓取其他照片
+    
     
     # 抓取作者
     pattern1 = r'[（(](.*?)[）)]'  # 匹配括號中的內容
@@ -75,5 +84,5 @@ def fetch(url):
 
 
 if __name__ == '__main__':
-    url = 'https://www.cna.com.tw/news/ait/202409120379.aspx'
+    url = 'https://www.cna.com.tw/news/ait/202409130176.aspx'
     print(fetch(url))

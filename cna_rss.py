@@ -13,9 +13,11 @@ def grab():
         url_list.append(entry.link)
     for entry in feed2.entries:
         url_list.append(entry.link)
+    for a in url_list:
+        print(a)  # 顯示url
     # 讀取url
     for url in tuple(url_list):
-        print(fetch(url))
+        print(fetch(url))  
     
 if __name__ == '__main__':
     grab()
