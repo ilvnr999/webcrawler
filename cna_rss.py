@@ -18,8 +18,8 @@ async def grab():
     fetch_tasks = [fetch(url) for url in url_list]
     results = await asyncio.gather(*fetch_tasks)
 
-    for result in results:
-        print(result)  # 顯示結果
+    '''for result in results:
+        print(result) ''' # 顯示結果
 
 if __name__ == '__main__':
     asyncio.run(grab())

@@ -7,7 +7,6 @@ import dateutil.tz
 import re
 
 async def fetch(url):
-    print(url)
     async with aiohttp.ClientSession() as session:
         # 使用 BasicAuth 對象來提供認證資訊
         auth = aiohttp.BasicAuth('5c532da8add642e6bf662951b506adac', '')
@@ -19,8 +18,6 @@ async def fetch(url):
             if response.status != 200:
                 print(f"Error: Received status code {response.status}")
                 return
-            else:
-                print(response.status)
 
             response_json = await response.json()
             http_response_body = base64.b64decode(response_json["httpResponseBody"])
@@ -32,11 +29,16 @@ async def fetch(url):
     url_split = str(url).split('/')
     url_num = url_split[-1].split('.')
     source_id = url_split[-2] + '/' + url_num[0]
-
+    
     # 中央社404狀態200
     if '404' in soup.find('title').text:
         print('404')
         return {"status": "error", "message": "404 not found"}
+
+    # 抓取類別
+    categories = soup.find('a', class_='blue')
+    if categories:
+        categories = categories.get_text()
 
     # 抓取標題
     title = soup.find('h1').text
@@ -57,7 +59,6 @@ async def fetch(url):
     all_p = text.find_all('p')
     p_list = [p.get_text() for p in all_p]
     content = ' '.join(p_list)
-
     # 抓取文章頭
     picture = soup.find('figure', class_='floatImg center')
     if picture:
@@ -80,9 +81,18 @@ async def fetch(url):
     # 抓取作者
     pattern1 = r'[（(](.*?)[）)]'  # 匹配括號中的內容
     find_author = str(re.findall(pattern1, p_list[0])) + str(re.findall(pattern1, p_list[-1]))
+    for i in range(-2, len(p_list) if len(p_list) < 4 else -5 , -1):
+        find_author += str(re.findall(pattern1, p_list[i]))
     pattern = r'(記者|編輯|譯者|核稿)[：:]?\s*([\u4e00-\u9fa5]{2,3})'
     matches = re.findall(pattern, find_author)
-    author = [' '.join(match) for match in matches]
+    author = ''.join(f"{work}{name}" for work, name in matches)
+    print(author)
+    
+    if not author:
+        author = 'none'
+    if not categories:
+        categories = 'none'
+    
 
     return {
         "source_id": source_id,
@@ -90,14 +100,15 @@ async def fetch(url):
         "time": time_turn,
         "author": author,
         "content": content,
-        "other_picture": other_picture
+        "other_picture": other_picture,
+        "categories": categories
     }
 
 # 用於測試異步 fetch 函數的示例代碼
 async def main():
-    url = 'https://www.cna.com.tw/news/afe/202409170209.aspx'
+    url = 'https://www.cna.com.tw/news/aopl/202409190010.aspx'
     result = await fetch(url)
-    print(result)
+    #print(result)
 
 if __name__ == '__main__':
     asyncio.run(main())
