@@ -1,6 +1,5 @@
 import requests
 from bs4 import BeautifulSoup
-import csv
 
 output = {"Title":None, "Time":None, "Author":None, "Content":None, "other_picture":None}
 url = 'https://money.udn.com/money/story/5599/8211575?from=edn_maintab_index'
@@ -38,7 +37,7 @@ figcaption_text = figcaption.get_text() + '\n'
 
 #抓取內容
 content = soup.find('section',class_='article-body__editor')
-output['Content'] = src + figcaption_text + content.get_text().strip()  #文章頭的圖片與照片加入content
+output['Content'] = src + figcaption_text + content.get_text().strip()  
 
 img_tags = content.find_all('img')
 image_urls = []

@@ -1,10 +1,12 @@
-import aiohttp
 import asyncio
 import base64
-from bs4 import BeautifulSoup
+import re
+
+import aiohttp
 import dateutil.parser
 import dateutil.tz
-import re
+from bs4 import BeautifulSoup
+
 
 async def fetch(url):
     async with aiohttp.ClientSession() as session:
@@ -108,7 +110,7 @@ async def fetch(url):
 async def main():
     url = 'https://www.cna.com.tw/news/aopl/202409190010.aspx'
     result = await fetch(url)
-    #print(result)
+    print(result)
 
 if __name__ == '__main__':
     asyncio.run(main())

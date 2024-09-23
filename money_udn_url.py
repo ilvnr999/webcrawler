@@ -1,13 +1,19 @@
-import requests
-from bs4 import BeautifulSoup
-import csv
 import argparse
+
 import dateutil.parser
 import dateutil.tz
+import requests
+from bs4 import BeautifulSoup
+
 
 def fetch(url):
 
-    output = {"Source_id":None, "Title":None, "Time":None, "Author":None, "Content":None, "Other_picture":None}
+    output = {"Source_id":None, 
+              "Title":None, 
+              "Time":None, 
+              "Author":None, 
+              "Content":None, 
+              "Other_picture":None}
     # 取得source_id
     url_split = str(url).split('/')
     url_id = url_split[-2]+url_split[-1].split('?')[0]
@@ -31,7 +37,7 @@ def fetch(url):
     author = soup.find('div',class_='article-body__info')
     author = author.get_text().strip()
     output['Author'] = author
-    a = author.split('/')
+
 
     #刪除延伸閱讀
     decompose = soup.find('b',string='延伸閱讀')
@@ -63,7 +69,8 @@ def fetch(url):
     for img in img_tags:
         src = img.get('src')
         image_urls.append(src)
-    if image_urls :output['Other_picture'] = image_urls    
+    if image_urls: 
+        output['Other_picture'] = image_urls    
     
         
     #print(image_urls)
