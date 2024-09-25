@@ -12,7 +12,7 @@ def fetch(url):
               "Time" : None, 
               "Author" : None, 
               "Content" : None,
-              "categories" : None, 
+              "Categories" : None, 
               "Other_picture" : None}
     
     # 取得source_id
@@ -36,7 +36,7 @@ def fetch(url):
     categories_block = soup.find('div', class_ = 'breadcrumbs boxTitle')
     categories_list= categories_block.find_all('a')
     categories = [a.get_text() for a in categories_list]
-    output['categories'] = categories
+    output['Categories'] = categories
 
     # 抓取標題
     title = soup.find('h1')

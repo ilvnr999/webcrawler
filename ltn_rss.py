@@ -33,8 +33,8 @@ def grab():
         fieldnames.append(key)
     print('column names',fieldnames)
 
-    csv_name = 'itn.csv'
-    with open(csv_name, 'a', encoding='utf-8', newline='') as file_obj:
+    csv_name = 'ltn.csv'
+    with open(csv_name, 'w', encoding='utf-8', newline='') as file_obj:
         writer = csv.DictWriter(file_obj, fieldnames=fieldnames)
         writer.writeheader()
         for row in url_content:
