@@ -7,7 +7,7 @@ from ltn_url import fetch
 
 def grab():
     # 指定RSS feed的URL
-    rss_url = 'https://udn.com/rssfeed/news/2/6644'
+    rss_url = 'https://news.ltn.com.tw/rss/business.xml'
 
     # 解析RSS feed
     feed = feedparser.parse(rss_url)

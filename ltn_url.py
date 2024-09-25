@@ -14,6 +14,7 @@ def fetch(url):
               "Content" : None,
               "categories" : None, 
               "Other_picture" : None}
+    
     # 取得source_id
     url_split = str(url).split('/')
     output['Source_id'] = url_split[-1]
@@ -32,31 +33,54 @@ def fetch(url):
 
     # 讀取categories
 
-    categories = soup.find_all('a', class_ = 'breadcrumb-items')
-    if len(categories) < 2:
-        print('非udn')
-        return 0
-    else:
-        categories = categories[1].get_text()
-    if categories != '產經': 
-        print('非產經類',categories)
-        return 0
+    categories_block = soup.find('div', class_ = 'breadcrumbs boxTitle')
+    categories_list= categories_block.find_all('a')
+    categories = [a.get_text() for a in categories_list]
     output['categories'] = categories
 
     # 抓取標題
     title = soup.find('h1')
     output['Title'] = title.get_text()
+    print(output['Title'])
 
     #抓取時間
-    time = soup.find('time').text
+    time = soup.find_all('span', class_='time')
+    time = [t for t in time]
+    time=time[-1].get_text()
     time_plus = str(time) + '+08:00'
     time_turn = dateutil.parser.parse(time_plus).astimezone(dateutil.tz.UTC)
     output['Time'] = str(time_turn)
     
+    #print(output)
+
+    #抓取文章頭的照片與文字
+    picture = soup.find('img', class_ = 'lazy_imgs_ltn imagePopup')
+    img = picture.get('data-src')
+    word = picture.get('alt')
+
+
+    #抓取內容
+    all_p = soup.find_all('p', class_=False)
+    p_list = [p.get_text().strip() for p in all_p[3:-6]]
+    #print([p.get_text() for p in all_p[-6:]])
+    content = ' '.join(p_list)
+    output['Content'] = img + word + content  #文章頭的圖片與照片加入content
+    
     #抓取作者
-    author_info = soup.find('span',class_='article-content__author')
-    author = author_info.find('a')
-    if author:
+    author = p_list[0]
+    print(author)
+    if '/' in author:
+        author = author.split('/')
+    if '／' in author:
+        author = author.split('／')
+    if '核稿編輯' in author:
+        author = author[1] + author[0]
+    else:
+        author = author[0][1:]
+    output['Author'] = author
+
+
+    '''if author:
         author = author.get_text().strip()
     else:
         author = author_info.get_text()
@@ -64,35 +88,16 @@ def fetch(url):
             author = author.split('/')[0]
         if '／' in author:
             author = author.split('／')[0]
-    output['Author'] = author
-    
-    #print(output)
+    output['Author'] = author'''
 
-    #抓取文章頭的照片與文字
-    picture = soup.find('figure', class_ = 'article-content__cover')
-    if picture:
-        src = picture.find('img').get('src')
-        figcaption = picture.find('figcaption').text
-    else:
-        src = ''
-        figcaption = ''
-
-
-    #抓取內容
-    text = soup.find('section', class_='article-content__editor')  # 抓取文章區域
-    all_p = text.find_all('p', style=None)
-    p_list = [p.get_text().strip() for p in all_p]
-    content = ' '.join(p_list)
-    output['Content'] = src + figcaption + content  #文章頭的圖片與照片加入content
-    
-    #抓取內文中的照片
+    '''#抓取內文中的照片
     img_tags = text.find_all('img')
     image_urls = []
     if img_tags:
         for img in img_tags:
             src = img.get('src')
             image_urls.append(src)
-            output['Other_picture'] = image_urls    
+            output['Other_picture'] = image_urls'''    
     
         
     #print(image_urls)
@@ -109,5 +114,5 @@ def fetch(url):
     return output
 
 if __name__ == '__main__':
-    url = 'https://ec.ltn.com.tw/article/breakingnews/4808252'
+    url = 'https://ec.ltn.com.tw/article/breakingnews/4808132'
     fetch(url)
