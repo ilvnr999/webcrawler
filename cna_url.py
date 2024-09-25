@@ -11,7 +11,7 @@ from bs4 import BeautifulSoup
 async def fetch(url):
     async with aiohttp.ClientSession() as session:
         # 使用 BasicAuth 對象來提供認證資訊
-        auth = aiohttp.BasicAuth('5c532da8add642e6bf662951b506adac', '')
+        auth = aiohttp.BasicAuth('{api_key}', '')
         async with session.post(
             "https://api.zyte.com/v1/extract",
             auth=auth,

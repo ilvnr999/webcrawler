@@ -1,6 +1,8 @@
-a = ['a', 'b', 'c']
-b = "d"
-for a in a:
-   b = a + b 
+import asyncio
 
-print(b)
+
+async def main():
+  await asyncio.sleep(1)
+  print('hi')
+
+asyncio.run(main())

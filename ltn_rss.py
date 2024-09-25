@@ -2,7 +2,7 @@ import csv
 
 import feedparser
 
-from itn_url import fetch
+from ltn_url import fetch
 
 
 def grab():

@@ -16,8 +16,7 @@ def fetch(url):
               "Other_picture" : None}
     # 取得source_id
     url_split = str(url).split('/')
-    url_id = url_split[-2]+url_split[-1].split('?')[0]
-    output['Source_id'] = url_id
+    output['Source_id'] = url_split[-1]
 
     responde = requests.get(url)
     if responde.status_code != 200:  # 狀態不為200跳出
@@ -105,10 +104,10 @@ def fetch(url):
         writer = csv.DictWriter(file_obj, fieldnames=fieldnames)
         writer.writeheader()
         writer.writerow(output)'''
-    #print(output)
+    print(output)
     
     return output
 
 if __name__ == '__main__':
-    url = 'https://udn.com/news/story/121591/8244626'
+    url = 'https://ec.ltn.com.tw/article/breakingnews/4808252'
     fetch(url)
