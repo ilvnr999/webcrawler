@@ -31,39 +31,40 @@ def fetch(url):
         print('404')
         return 0
 
-    # 讀取categories
+    '''# 讀取categories
     categories_block = soup.find('div', class_ = 'breadcrumbs boxTitle')
     categories_list= categories_block.find_all('a')
     categories = [a.get_text() for a in categories_list]
-    output['Categories'] = categories
+    output['Categories'] = categories'''
 
     # 抓取標題
     title = soup.find('h1')
-    output['Title'] = title.get_text()
+    output['Title'] = title.get_text().strip()
     print(output['Title'])
 
-    # 抓取時間
-    time = soup.find_all('span', class_='time')
-    time = [t for t in time]
-    time=time[-1].get_text()
+    '''# 抓取時間
+    time = soup.find_all('span', class_='entityPublishInfo-meta-info text text--f text--secondary text--regular entityPublishInfo-meta-info--visible')
+    print(time)
     time_plus = str(time) + '+08:00'
     time_turn = dateutil.parser.parse(time_plus).astimezone(dateutil.tz.UTC)
-    output['Time'] = str(time_turn)
+    output['Time'] = str(time_turn)'''
     
     #print(output)
 
     #抓取文章頭的照片與文字
-    picture = soup.find('img', class_ = 'lazy_imgs_ltn imagePopup')
-    img = picture.get('data-src')
-    word = picture.get('alt')
-
-    #抓取內容
-    all_p = soup.find_all('p', class_=False)
-    p_list = [p.get_text().strip() for p in all_p[3:-6]]
-    #print([p.get_text() for p in all_p[-6:]])
-    content = ' '.join(p_list)
-    output['Content'] = img + word + content  #文章頭的圖片與照片加入content
-    
+    picture = soup.find('div', class_ = 'image-wrapper image-wrapper-withsizes')
+    img = picture.find('img').get('src')
+    article = soup.find('article', class_='news-content textSize--md')
+ 
+    # 抓取內容
+    ul = article.find('ul')
+    for element in ul.find_all_next():
+            element.decompose()  # 刪除該標籤及其所有後代
+            ul.decompose()   # 刪除延伸閱讀
+    #print(article.get_text())
+    content = picture.find_all_next()
+    output['Content'] = str(img)  + str(content)  #文章頭的圖片與照片加入content
+    print(output['Content'])
     #抓取作者
     author = p_list[0]
     print(author)
@@ -112,5 +113,5 @@ def fetch(url):
     return output
 
 if __name__ == '__main__':
-    url = 'https://ec.ltn.com.tw/article/breakingnews/4808132'
+    url = 'https://today.line.me/tw/v2/article/2DO5plP'
     fetch(url)
