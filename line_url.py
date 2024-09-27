@@ -1,14 +1,17 @@
+from base64 import b64decode
+
 import requests
 from bs4 import BeautifulSoup
 
 
 def remove_keyword(text, keywords):
+    '''將文章末 各家新聞的廣告刪除'''
     for keyword in keywords:
         if keyword in text:
             text = text.split(keyword)[0]
     return text
 
-def fetch(url):
+def fetch(url, categories=None):
     '''抓取url上的標題、時間、作者、內文與其他照片'''
     print(url)
     output = {"Source_id" : None, 
@@ -16,23 +19,27 @@ def fetch(url):
               "Time" : None, 
               "Author" : None, 
               "Content" : None,
-              "Categories" : None, 
-              "Other_picture" : None}
+              "Categories" : categories, 
+              "Other_picture" : []}
     
     # 取得source_id
     url_split = str(url).split('/')
     output['Source_id'] = url_split[-1]
 
-    response = requests.get(url)
-    if response.status_code != 200:  # 狀態不為200跳出
-        return print(f'{url} \n status = {response.status_code}')
-    
-    # 讀取HTML內文
-    html_content = response.text
-    soup = BeautifulSoup(html_content, 'html5lib')  # 解析成HTML樹狀結構
+    api_response = requests.post(
+    "https://api.zyte.com/v1/extract",
+    auth=("bbc1a2b309d74e21a8cc452e054e54d5", ""),
+    json={
+        "url": url,
+        "httpResponseBody": True,
+    },
+    )
+    http_response_body: bytes = b64decode(api_response.json()["httpResponseBody"])
 
-    if soup.find('span', class_ = 'error-text'):
-        print('404')
+    soup = BeautifulSoup(http_response_body, 'html5lib')  # 解析成HTML樹狀結構
+
+    if soup.find('figure', class_ = 'entityVideoPlayer-wrapper'):
+        print('video')
         return 0
 
     '''# 讀取categories
@@ -48,9 +55,12 @@ def fetch(url):
 
     #抓取文章頭的照片與文字
     picture = soup.find('div', class_ = 'image-wrapper image-wrapper-withsizes')
-    img = picture.find('img').get('src')
+    if picture:
+        img = picture.find('img').get('src')
+    else:
+        img = ''
+
     article = soup.find('article', class_='news-content textSize--md')
- 
     # 刪除不必要內容
     ul = article.find('ul')
     if ul:
@@ -61,7 +71,7 @@ def fetch(url):
     
     # 抓取內容
     keywords = ['延伸閱讀', '＊編者按：','下載「財訊快報App」最即時最專業最深度','立刻加入','《民視新聞網》提醒您', '更多']
-    content = picture.find_all_next(['p','h3'], herf=False)
+    content = article.find_all_next(['p','h3'], herf=False)
     text = [element.get_text() for element in content]
     text = ''.join(text)
     remove_keyword(text, keywords)
@@ -79,9 +89,9 @@ def fetch(url):
     output['Time'] = str(time.get_text().strip())
 
     #抓取內文中的照片
-    img_tags = picture.find_all_next('img')
-    if len(img_tags) > 2 :
-        image_urls= [img.get('src') for img in img_tags]
+    img_tags = article.find_all_next('img')
+    if img_tags :
+        image_urls= [img.get('src') for img in img_tags[1:] if img.get('src') != '']
         output['Other_picture'] = image_urls
 
     #寫入csv檔案
