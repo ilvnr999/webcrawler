@@ -1,9 +1,13 @@
+import csv
 import time
 
 from bs4 import BeautifulSoup
 from selenium import webdriver
 
 from line_url import fetch
+
+url_content = []
+fieldnames =[]
 
 url = 'https://today.line.me/tw/v3/page/finance'
 # 設定 WebDriver
@@ -12,7 +16,7 @@ driver.get(url)
 # 模擬滾動到頁面底部
 driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 # 等待頁面加載
-time.sleep(2)  # 可以根據需要調整這個時間
+time.sleep(1)  # 可以根據需要調整這個時間
 
 html_content = driver.page_source
 soup = BeautifulSoup(html_content, 'html.parser')
@@ -38,43 +42,19 @@ for div in target_divs:
                 if '60VLrQw' in href:
                     continue
                 url = 'https://today.line.me' + href
-                print(fetch(url, h2))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-'''top = soup.find('div', {'data-anchor-id': "66ac67576bf9c1541d469ee1"})
-cate = top.find('h2')
-print(cate.text)
-urls = top.find_all('a', class_='ltcp-link')
-for url in urls:
-    print(url.get('href'))'''
-'''# 查找需要的內容
-h2 = soup.find_all('h2')
-print([element.get_text() for element in h2])
-categories = soup.find_all('a', class_='ltcp-link')
-links = [link.get('href') for link in categories]
-
-# 打印所有的連結
-for link in links:
-    if '/tw/v2/article/' in str(link):
-        str1 = 'https://today.line.me' + link
-        print(fetch(str1))
-'''
-#print(categories)
-
+                output = fetch(url, h2)
+                if output != 0:
+                    url_content.append(output)
+                print(output)
 driver.quit()
+
+# 讀取行名稱
+fieldnames = list(url_content[0].keys())
+print('column names',fieldnames)
+
+csv_name = 'csv/line.csv'
+with open(csv_name, 'w', encoding='utf-8', newline='') as file_obj:
+    writer = csv.DictWriter(file_obj, fieldnames=fieldnames)
+    writer.writeheader()
+    for row in url_content:
+        writer.writerow(row)
