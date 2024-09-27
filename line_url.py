@@ -1,4 +1,6 @@
+import re
 from base64 import b64decode
+from datetime import datetime, timedelta
 
 import requests
 from bs4 import BeautifulSoup
@@ -77,16 +79,40 @@ def fetch(url, categories=None):
     remove_keyword(text, keywords)
     output['Content'] = str(img)  + str(text)  #文章頭的圖片與照片加入content
     
-    # 抓取作者
-    div = soup.find('div',class_='entityPublishInfo-meta')
-    author = div.find('a').text.strip()
-    output['Author'] = author
-
     # 抓取時間
+    div = soup.find('div',class_='entityPublishInfo-meta')
     time = div.find('span')
     '''time_plus = str(time) + '+08:00'
     time_turn = dateutil.parser.parse(time_plus).astimezone(dateutil.tz.UTC)'''
-    output['Time'] = str(time.get_text().strip())
+    time = str(time.get_text().strip()).split(' • ')
+    
+    
+    if len(time) >= 3:
+        author2 = time[2]
+    else:
+        author2 = ""
+    pattern = r"發布於"
+    for t in time: 
+        if re.search(pattern, t): 
+            ago = t
+    current_time = datetime.now()
+    if '小時' in ago:
+        match = re.search(r'\d+', ago)
+        number = int(match.group())
+        new_time = current_time - timedelta(hours=number)
+    elif '分鐘' in ago:
+        match = re.search(r'\d+', ago)
+        number = int(match.group())
+        new_time = current_time - timedelta(minutes=number)
+    else:
+        new_time=ago
+    output['Time'] = str(new_time)
+
+
+    # 抓取作者
+    
+    author = div.find('a').text.strip()
+    output['Author'] = author + author2
 
     #抓取內文中的照片
     img_tags = article.find_all_next('img')
@@ -101,10 +127,10 @@ def fetch(url, categories=None):
         writer = csv.DictWriter(file_obj, fieldnames=fieldnames)
         writer.writeheader()
         writer.writerow(output)'''
-    #print(output)
+    print(output)
     
     return output
 
 if __name__ == '__main__':
-    url = 'https://today.line.me/tw/v2/article/wJO17gl'
+    url = 'https://today.line.me/tw/v2/article/rmnMEg0'
     fetch(url)
