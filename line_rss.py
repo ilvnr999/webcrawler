@@ -1,3 +1,4 @@
+import asyncio
 import csv
 import time
 
@@ -39,44 +40,41 @@ def grab(cat, url):
                 if 'article' in half_url:
                     url = 'https://today.line.me' + half_url
                     rss[h2].append(url)
-
-
-            '''hrefs = [link['href'] for link in links ]  # 獲取所有 href 值
-            print(h2, hrefs)
-            for href in hrefs:
-                if 'article' in href :
-                    url = 'https://today.line.me' + href
-                    #output = fetch(url, h2)
-                    if output != 0:
-                        url_content.append(output)
-                    print(output)'''
     driver.quit()
 
-def read_url():
+async def read_url():
     for cat, urls in rss.items():
         for url in urls:
-            output = fetch(url, cat)
+            output = await fetch(url, cat)  # 使用 await 調用 fetch
             if output != 0:
                 url_content.append(output)
 
 def save(): 
     # 讀取行名稱
-    fieldnames = list(url_content[0].keys())
-    print('column names',fieldnames)
+    if not url_content:  # 檢查 url_content 是否為空
+        print("url_content is empty. No data to save.")
+        return
 
-    csv_name = 'csv/line_new.csv'
+    fieldnames = list(url_content[0].keys())
+    print('column names', fieldnames)
+
+    csv_name = 'csv/line_new2.csv'
     with open(csv_name, 'w', encoding='utf-8', newline='') as file_obj:
         writer = csv.DictWriter(file_obj, fieldnames=fieldnames)
         writer.writeheader()
         for row in url_content:
             writer.writerow(row)
 
-if __name__ == '__main__':
+async def main():
+    global rss, url_content  # 設定全局變數
     rss = {}
     url_content = []
     url1 = 'https://today.line.me/tw/v3/page/finance'
-    grab('理財,' ,url1)
+    grab('理財', url1)  # 使用 await
     url2 = 'https://today.line.me/tw/v3/page/tech'
-    grab('科技,', url2)
-    read_url()
+    grab('科技', url2)  # 使用 await
+    await read_url()  # 使用 await
     save()
+
+if __name__ == '__main__':
+    asyncio.run(main())  # 使用 asyncio.run 來執行 main 函數
