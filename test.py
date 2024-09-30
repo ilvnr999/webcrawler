@@ -28,8 +28,6 @@ for div in target_divs:
     h2_tag = div.find('h2')  # 查找內部的 <h2>
     if h2_tag:
         h2 = '理財' + h2_tag.text.strip()
-        '''if "財知道" in h2 :
-            continue'''
     else:
         h2 = '理財'
 

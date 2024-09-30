@@ -2,6 +2,8 @@ import re
 from base64 import b64decode
 from datetime import datetime, timedelta
 
+import dateutil.parser
+import dateutil.tz
 import requests
 from bs4 import BeautifulSoup
 
@@ -37,18 +39,10 @@ def fetch(url, categories=None):
     },
     )
     http_response_body: bytes = b64decode(api_response.json()["httpResponseBody"])
-
     soup = BeautifulSoup(http_response_body, 'html5lib')  # 解析成HTML樹狀結構
-
     if soup.find('figure', class_ = 'entityVideoPlayer-wrapper'):
         print('video')
         return 0
-
-    '''# 讀取categories
-    categories_block = soup.find('div', class_ = 'breadcrumbs boxTitle')
-    categories_list= categories_block.find_all('a')
-    categories = [a.get_text() for a in categories_list]
-    output['Categories'] = categories'''
 
     # 抓取標題
     title = soup.find('h1')
@@ -82,20 +76,17 @@ def fetch(url, categories=None):
     # 抓取時間
     div = soup.find('div',class_='entityPublishInfo-meta')
     time = div.find('span')
-    '''time_plus = str(time) + '+08:00'
-    time_turn = dateutil.parser.parse(time_plus).astimezone(dateutil.tz.UTC)'''
     time = str(time.get_text().strip()).split(' • ')
-    
-    
-    if len(time) >= 3:
+    if len(time) >= 3:  # 判斷發布日期格式
         author2 = time[2]
     else:
         author2 = ""
     pattern = r"發布於"
-    for t in time: 
+    for t in time:  # 抓出發布日期
         if re.search(pattern, t): 
             ago = t
-    current_time = datetime.now()
+    current_time = datetime.now().replace(microsecond=0)
+    date = ''
     if '小時' in ago:
         match = re.search(r'\d+', ago)
         number = int(match.group())
@@ -104,9 +95,19 @@ def fetch(url, categories=None):
         match = re.search(r'\d+', ago)
         number = int(match.group())
         new_time = current_time - timedelta(minutes=number)
+    elif '天' in ago:
+        match = re.search(r'\d+', ago)
+        number = int(match.group())
+        new_time = current_time - timedelta(days=number)
+    elif '年' in ago :   
+        print(ago)
+        new_time = datetime.strptime(f"{ago[3:].strip()}", "%Y年%m月%d日%H:%M")
     else:
-        new_time=ago
-    output['Time'] = str(new_time)
+        print(ago)
+        new_time = datetime.strptime(f"{current_time.year}年{ago[3:].strip()}", "%Y年%m月%d日%H:%M")
+    time_plus = str(new_time) + '+08:00'
+    time_turn = dateutil.parser.parse(time_plus).astimezone(dateutil.tz.UTC)
+    output['Time'] = date + str(time_turn)
 
 
     # 抓取作者
@@ -132,5 +133,5 @@ def fetch(url, categories=None):
     return output
 
 if __name__ == '__main__':
-    url = 'https://today.line.me/tw/v2/article/rmnMEg0'
+    url = 'https://today.line.me/tw/v2/article/WBMzwRQ'
     fetch(url)
