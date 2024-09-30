@@ -21,10 +21,9 @@ def fetch(url, categories=None):
     output = {"Source_id" : None, 
               "Title" : None, 
               "Time" : None, 
-              "bar" : None,
+              "Categories" : categories,
               "Author" : None, 
               "Content" : None,
-              "Categories" : categories, 
               "Other_picture" : []}
     
     # 取得source_id
@@ -110,8 +109,7 @@ def fetch(url, categories=None):
     time_turn = dateutil.parser.parse(time_plus).astimezone(dateutil.tz.UTC)
     output['Time'] = date + str(time_turn)
 
-    #bar
-    output['bar'] = time
+    # author
     aut = ''
     for t in time:
         if not any(char.isdigit() for char in t):

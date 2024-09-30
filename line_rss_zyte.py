@@ -1,24 +1,30 @@
 import csv
-import time
 
+import requests
 from bs4 import BeautifulSoup
-from selenium import webdriver
 
 from line_url import fetch
 
+url_content = []
+fieldnames =[]
+def grab():
+    # 指定RSS feed的URL
+    url = 'https://today.line.me/tw/v3/page/finance'
 
-def grab(cat, url , file_type):
-    url_content = []
-    # 設定 WebDriver
-    driver = webdriver.Chrome()  # 確保你已經安裝了 ChromeDriver
-    driver.get(url)
-    # 模擬滾動到頁面底部
-    driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-    # 等待頁面加載
-    time.sleep(1)  # 可以根據需要調整這個時間
-
-    html_content = driver.page_source
-    soup = BeautifulSoup(html_content, 'html.parser')
+    api_response = requests.post(
+        "https://api.zyte.com/v1/extract",
+        auth=("bbc1a2b309d74e21a8cc452e054e54d5", ""),
+        json={
+            "url": url,
+            "browserHtml": True,
+        },
+    )
+    if api_response.status_code != 200:  # 狀態不為200跳出
+        return print(f'{url} \n status = {api_response.status_code}')
+    
+    browser_html: str = api_response.json()["browserHtml"]
+    if browser_html:
+        soup = BeautifulSoup(browser_html, 'html5lib')
 
     target_divs = soup.find_all('div', attrs={'data-anchor-id': True})
 
@@ -26,9 +32,9 @@ def grab(cat, url , file_type):
     for div in target_divs:
         h2_tag = div.find('h2')  # 查找內部的 <h2>
         if h2_tag:
-            h2 = cat + h2_tag.text.strip()
+            h2 = '理財' + h2_tag.text.strip()
         else:
-            h2 = cat
+            h2 = '理財'
 
         #print(h2)  # 輸出 data-anchor-id 和 h2 的文本內容
         links = div.find_all('a', class_='ltcp-link')  # 在 <h2> 中查找所有 class 為 ltcp-link 的 <a>
@@ -43,21 +49,17 @@ def grab(cat, url , file_type):
                     if output != 0:
                         url_content.append(output)
                     print(output)
-    driver.quit()
 
     # 讀取行名稱
     fieldnames = list(url_content[0].keys())
     print('column names',fieldnames)
 
-    csv_name = 'csv/line.csv'
-    with open(csv_name, file_type, encoding='utf-8', newline='') as file_obj:
+    csv_name = 'csv/line_api.csv'
+    with open(csv_name, 'w', encoding='utf-8', newline='') as file_obj:
         writer = csv.DictWriter(file_obj, fieldnames=fieldnames)
         writer.writeheader()
         for row in url_content:
             writer.writerow(row)
 
 if __name__ == '__main__':
-    url1 = 'https://today.line.me/tw/v3/page/finance'
-    grab('理財,' ,url1, 'w')
-    url2 = 'https://today.line.me/tw/v3/page/tech'
-    grab('科技,', url2, 'a')
+    grab()

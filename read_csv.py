@@ -8,4 +8,5 @@ df = pd.read_csv(fn)
 column_data = df['Author']
 a = set(column_data.tolist())
 # 打印提取的列數據
-
+for an in a:
+    print(an)
