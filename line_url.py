@@ -21,6 +21,7 @@ def fetch(url, categories=None):
     output = {"Source_id" : None, 
               "Title" : None, 
               "Time" : None, 
+              "bar" : None,
               "Author" : None, 
               "Content" : None,
               "Categories" : categories, 
@@ -77,10 +78,10 @@ def fetch(url, categories=None):
     div = soup.find('div',class_='entityPublishInfo-meta')
     time = div.find('span')
     time = str(time.get_text().strip()).split(' • ')
-    if len(time) >= 3:  # 判斷發布日期格式
+    '''if len(time) >= 3:  # 判斷發布日期格式
         author2 = time[2]
     else:
-        author2 = ""
+        author2 = ""'''
     pattern = r"發布於"
     for t in time:  # 抓出發布日期
         if re.search(pattern, t): 
@@ -109,11 +110,22 @@ def fetch(url, categories=None):
     time_turn = dateutil.parser.parse(time_plus).astimezone(dateutil.tz.UTC)
     output['Time'] = date + str(time_turn)
 
-
-    # 抓取作者
+    #bar
+    output['bar'] = time
+    aut = ''
+    for t in time:
+        if not any(char.isdigit() for char in t):
+            aut = t
+    if aut:
+        if '\u3000' in aut:
+            aut = aut.split('\u3000')[0]
+        if '／' in aut:
+            aut = aut.split('／')[0]
+        print(aut)
     
+    # 抓取作者    
     author = div.find('a').text.strip()
-    output['Author'] = author + author2
+    output['Author'] = author + aut
 
     #抓取內文中的照片
     img_tags = article.find_all_next('img')
@@ -133,5 +145,5 @@ def fetch(url, categories=None):
     return output
 
 if __name__ == '__main__':
-    url = 'https://today.line.me/tw/v2/article/WBMzwRQ'
+    url = 'https://today.line.me/tw/v2/article/JPmG22K'
     fetch(url)

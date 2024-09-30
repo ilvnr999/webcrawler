@@ -5,7 +5,7 @@ fn = 'csv/line.csv'
 df = pd.read_csv(fn)
 
 # 提取單個列
-column_data = df['Time'].to_string()
-
+column_data = df['Author']
+a = set(column_data.tolist())
 # 打印提取的列數據
-print(column_data)
+
