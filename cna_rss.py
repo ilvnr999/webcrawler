@@ -17,12 +17,14 @@ async def grab():
     for entry in feed2.entries:
         url_list.add(entry.link)
 
+    for url in url_list:
+        print(url)
     # 使用 asyncio.gather 來並行調用 fetch 函數
-    fetch_tasks = [fetch(url) for url in url_list]
+    '''fetch_tasks = [fetch(url) for url in url_list]
     results = await asyncio.gather(*fetch_tasks)
-
+    
     for result in results:
-        print(result)  # 顯示結果
+        print(result)  # 顯示結果'''
 
 if __name__ == '__main__':
     asyncio.run(grab())
