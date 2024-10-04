@@ -35,7 +35,7 @@ async def fetch(url, categories=None):
     async with aiohttp.ClientSession() as session:
         async with session.post(
             "https://api.zyte.com/v1/extract",
-            auth=aiohttp.BasicAuth("bbc1a2b309d74e21a8cc452e054e54d5", ""),
+            auth=aiohttp.BasicAuth("5c532da8add642e6bf662951b506adac", ""),
             json={
                 "url": url,
                 "httpResponseBody": True,
@@ -70,7 +70,10 @@ async def fetch(url, categories=None):
                 ul.decompose()  # 刪除延伸閱讀
 
             # 抓取內容
-            keywords = ['延伸閱讀', '＊編者按：','下載「財訊快報App」最即時最專業最深度','立刻加入','《民視新聞網》提醒您', '更多']
+            keywords = ['延伸閱讀', '＊編者按：', '下載「財訊快報App」最即時最專業最深度', '立刻加入',
+                                '《民視新聞網》提醒您', '更多', '想快速知道', '1. 享受更高質量的財經內容 點我加入經濟日報好友',
+                                '加入《工商時報》LINE好友', '4. 《👉加入民視新聞Line好友，重點新聞不漏接👈》', '加入〈財經M平方〉官方Line',
+                                '想快速知道', '立即加入《TVBS娛樂頭條》']
             content = article.find_all_next(['p', 'h3'], href=False)
             text = [element.get_text() for element in content]
             text = ''.join(text)

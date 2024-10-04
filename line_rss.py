@@ -18,17 +18,14 @@ def grab(cat, url):
     time.sleep(1)  # 可以根據需要調整這個時間
     html_content = driver.page_source
     soup = BeautifulSoup(html_content, 'html.parser')
-
-    target_divs = soup.find_all('div', attrs={'data-anchor-id': True})
-
     # 遍歷每個 <div>，並查找其內部的 <h2>
+    target_divs = soup.find_all('div', attrs={'data-anchor-id': True})
     for div in target_divs:
         h2_tag = div.find('h2')  # 查找內部的 <h2>
         if h2_tag:
-            h2 = cat + h2_tag.text.strip()
+            h2 = cat+ "," + h2_tag.text.strip()
         else:
             h2 = cat
-
         if h2 not in rss:
             rss[h2] = []
 
