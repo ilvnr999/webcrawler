@@ -19,18 +19,26 @@ def extract_tech_terms(content):
         model="gpt-4o-mini",
         messages=[
             {"role": "system",
-             "content": "You are a helpful assistant specialized in extracting specialized terms from various fields. Your task is to identify and extract specific terminologies. For example, in the context of machine learning, focus on terms like 'machine learning', 'deep learning' 'Python' 'data science' and others. Please pay attention to context to provide the most relevant terms."},
+             "content": "You are a helpful assistant specialized in extracting specialized terms from various fields. Your task is to identify and \
+                        extract specific terminologies. For example, in the context of machine learning, focus on terms like 'machine learning',\
+                        'deep learning', 'Python', 'data science' and others. Please pay attention to context to provide the most relevant terms."},
             {"role": "user", "content": content}
         ],
         response_format=TermsStructure,
     )
     return complition.choices[0].message.parsed
 
+def extract_list(terms_str):
+    terms_str = terms_str.split(",", 1)[1].rstrip(')')
+    terms_list = eval(terms_str)
+    return terms_list
+
 def save_csv(path, terms):
     if not os.path.exists(path) or os.path.getsize(path) == 0:
         mode = 'w'
     else: 
         mode = 'a'
+    terms = list(set(terms))
     df = pd.DataFrame({"繁中":terms})
     df.to_csv(path, mode=mode)
 
@@ -40,7 +48,8 @@ def main():
     terms_list = []
     contents = read_csv(read_path)
     for cont in contents:
-        terms = extract_tech_terms(cont)
+        terms_str = extract_tech_terms(cont)
+        terms = terms_str.proper_nuons
         terms_list.extend(terms)
     save_csv(save_path, terms_list)
 
