@@ -19,10 +19,10 @@ def extract_tech_terms(content):
         model="gpt-4o-mini",
         messages=[
             {"role": "system",
-             "content": "You are a helpful assistant specialized in extracting specialized terms from various fields. Your task is to identify and \
-                        extract specific terminologies. For example, in the context of machine learning, focus on terms like 'machine learning',\
-                        'deep learning', 'Python', 'data science' and others. Please pay attention to context to provide the most relevant terms."},
-            {"role": "user", "content": content}
+             "content": "你是一個專業的科技內容分析師，能夠從文章中提取出科技相關的專有名詞。"},
+            {"role": "user", "content": "請從以下文章中提取所有科技、電子、半導體、汽車、以及新興科技等領域的專有名詞。\
+             例如:半導體的矽基氮化鎵、先進製程，電池的12V與48V，純電動車，自動駕駛系統、盲點偵測系統，自動緊急煞車系統，3D人臉辨識、影像處理晶片，雲端運算、運算型伺服器，化合物半導體、電流均一性，汽車市場規模、成本結構優化。"},
+            {"role": "user", "content":content}
         ],
         response_format=TermsStructure,
     )
@@ -44,7 +44,7 @@ def save_csv(path, terms):
 
 def main():
     read_path = 'csv/line_api.csv'
-    save_path = 'csv/terms.csv'
+    save_path = 'csv/terms3.csv'
     terms_list = []
     contents = read_csv(read_path)
     for cont in contents:
