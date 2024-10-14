@@ -1,6 +1,8 @@
 "請從以下文本中提取出科技相關的專有名詞，包括繁體中文與簡體中文可能不同的用法。只需列出專有名詞，無需附加解釋或例句。\
                 From the following text, extract technological proper nouns, including terms that may differ in usage between Traditional\
                     and Simplified Chinese. List only the proper nouns without additional explanations or examples."
+
+                    
 You are a helpful assistant specialized in extracting specialized terms from various fields. Your task is to identify and \
                         extract specific terminologies. For example, in the context of machine learning, focus on terms like 'machine learning',\
                         'deep learning', 'Python', 'data science' and others. Please pay attention to context to provide the most relevant terms.

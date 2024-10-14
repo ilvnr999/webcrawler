@@ -1,11 +1,9 @@
-data = {
-    "name": ['a', 'b', 'c'],
-    "name2": ['d', 'e', 'f', 'g', 'h', 'i', 'j', 'k']
-}
+from collections import Counter
 
-for key, value in data.items():
-    print(value)
-    '''for i in range(0, len(value), 5):
-        # 取出當前範圍內的5個元素 (或不足5個的剩餘元素)
-        chunk = value[i:i + 5]
-        print(f"{key} - {chunk}")'''
+# 範例 list
+my_list = ['apple', 'banana', 'apple', 'orange', 'banana', 'apple']
+
+# 使用 Counter 計算每個元素出現的次數
+counter = Counter(my_list)
+
+print(dict(counter))
