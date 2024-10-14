@@ -4,16 +4,12 @@ from collections import Counter
 import pandas as pd
 import tiktoken
 from openai import OpenAI
-from pydantic import BaseModel
 
 client = OpenAI()
 
-class TermsStructure(BaseModel):
-    proper_nuons : list[str]
-
 def read_csv(path):
     df = pd.read_csv(path)
-    content = df["Content"]
+    content = df["content"]
     return content 
 
 def batch(model, max_token, content_list, prompt):
@@ -28,7 +24,7 @@ def batch(model, max_token, content_list, prompt):
             batch_list.append(current_batch)
             current_batch = ""
             current_token = estimated_prompt_token
-        current_batch += content.strip() + " "
+        current_batch += content.replace("\n", "") + "\n"
         current_token += content_token
     if current_batch:
         batch_list.append(current_batch.strip())
@@ -36,7 +32,7 @@ def batch(model, max_token, content_list, prompt):
 
 
 def extract_tech_terms(content, model, prompt):
-    complition = client.beta.chat.completions.parse(
+    response = client.chat.completions.create(
         model=model,
         messages=[
             {"role": "system",
@@ -45,10 +41,13 @@ def extract_tech_terms(content, model, prompt):
         ],
         temperature=0,
         top_p=1,
-        seed=2,
-        response_format=TermsStructure,
+        seed=2
     )
-    return complition.choices[0].message.parsed
+    usage = response.usage  # 獲取 usage 欄位
+    prompt_tokens = usage.prompt_tokens
+    completion_tokens = usage.completion_tokens
+    total_tokens = usage.total_tokens
+    return response.choices[0].message.content.strip(), prompt_tokens, completion_tokens, total_tokens
 
 def save_csv(path, terms):
     if not os.path.exists(path) or os.path.getsize(path) == 0:
@@ -62,23 +61,24 @@ def save_csv(path, terms):
 
 def main():
     model = "gpt-4o"
-    prompt = "You are a model that extracts all proper nouns, technical terms, and other nouns that have different expressions in \
-                    Simplified and Traditional Chinese. The input consists of multiple articles separated by the delimiter ' '. Please ensure that \
-                    you accurately extract terms from each article, recognizing this delimiter as the boundary between different articles. \
-                    For example, for 'Nvidia', you should return '英伟达' and '輝達'. Additionally, include terms like '製程' and '工艺', \
-                    or '雲端運算' and '雲計算'. Focus on capturing brand names, company names, product names, and any other relevant terms, \
-                    returning only the extracted terms without any additional explanation."
+    prompt = "You are a model that extracts all proper nouns, technical terms, and other nouns that have different expressions in Simplified \
+            and Traditional Chinese. The input consists of multiple articles separated by the delimiter ' '. Please ensure that you accurately \
+            extract terms from each article, recognizing this delimiter as the boundary between different articles. For example, for ‘Nvidia’, \
+            you should return ‘英伟达’ and ‘輝達’. Additionally, include terms like ‘製程’ and ‘工艺’, or ‘雲端運算’ and ‘雲計算’. \
+            Focus on capturing brand names, company names, product names, and any other relevant terms, returning only the extracted terms. \
+            Each proper noun must be separated by a comma."
     max_token = 8000
-    read_path = 'csv/line_api.csv'
-    save_path = 'csv/terms6_4o.csv'
+    read_path = 'tech_news/technews-08_1.csv'
+    save_path = 'tech_news/terms_1-2.csv'
     terms_list = []
     contents = read_csv(read_path)
     print(contents.str.len().sum())
     batch_list = batch(model, max_token, contents, prompt)
     print(sum(len(batch) for batch in batch_list))
     for cont in batch_list:
-        terms_str = extract_tech_terms(cont, model, prompt)
-        terms = terms_str.proper_nuons
+        terms_str, prom_token, re_token, tot_token = extract_tech_terms(cont, model, prompt)
+        print(prom_token, re_token, tot_token)
+        terms = [s.strip() for s in terms_str.split(",")]
         print(terms)
         terms_list.extend(terms)
     save_csv(save_path, terms_list)

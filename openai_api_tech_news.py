@@ -41,8 +41,8 @@ def extract_tech_terms(content, model):
             messages=[
                 {"role": "system",
                 "content": "You are a model that extracts all proper nouns, technical terms, and other nouns that have different expressions in \
-                        Simplified and Traditional Chinese. The input consists of multiple articles separated by the delimiter '***'. Please ensure that \
-                        you accurately extract terms from each article, recognizing this delimiter as the boundary between different articles. \
+                        Simplified and Traditional Chinese. The input consists of multiple articles separated by the delimiter ' '. Please ensure \
+                        that you accurately extract terms from each article, recognizing this delimiter as the boundary between different articles. \
                         For example, for 'Nvidia', you should return '英伟达' and '輝達'. Additionally, include terms like '製程' and '工艺', \
                         or '雲端運算' and '雲計算'. Focus on capturing brand names, company names, product names, and any other relevant terms, \
                         returning only the extracted terms without any additional explanation."},
@@ -76,8 +76,8 @@ def save_csv(path, terms):
 def main():
     model = "gpt-4o"
     max_token = 3000
-    read_path = 'tech_news/technews-08.csv'
-    save_path = 'tech_news/terms.csv'
+    read_path = 'tech_news/technews-08_1.csv'
+    save_path = 'tech_news/terms_1.csv'
     terms_list = []
     contents = read_csv(read_path)
     print(contents.str.len().sum())

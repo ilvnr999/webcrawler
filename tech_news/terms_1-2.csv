@@ -1,0 +1,1332 @@
+,名詞,數量
+0,西歐,1
+1, 歐盟,4
+2, 中東歐,1
+3, 新冠疫情,1
+4, 俄烏戰爭,1
+5, 德國,1
+6, 法國,1
+7, 義大利,1
+8, 西班牙,1
+9, 波蘭,1
+10, 希臘,1
+11, 匈牙利,1
+12, Unsplash,6
+13, Ultrabook,1
+14, 蘋果,11
+15, NPU,2
+16, 高通,5
+17, Qualcomm,4
+18, Windows-On-Arm,2
+19, Snapdragon X Elite,2
+20, 微軟,10
+21, Copilot+ PC,1
+22, 英特爾,4
+23, Lunar Lake,1
+24, Pat Gelsinger,4
+25, COMPUTEX,1
+26, Michelle Johnston Holthaus,1
+27, Meteor Lake,2
+28, AMD,8
+29, Nvidia,11
+30, Lenovo,1
+31, ThinkPad X1 Cardon Gen 12,1
+32, Windows,3
+33, Teams,1
+34, Alder Lake,1
+35, Raptor Lake,3
+36, MacBook,1
+37, 台積電,25
+38, Pentium M,1
+39, Compute Tile,1
+40, Platform Controller Tile,1
+41, Intel 18A,3
+42, N3B,1
+43, N6,1
+44, N3E,1
+45, Panther Lake,2
+46, Clearwater Forest,2
+47, Arrow Lake,2
+48, 小鵬汽車,2
+49, 福斯汽車集團,2
+50, Volkswagen,2
+51, CMP,2
+52, MEB,2
+53, CEA,2
+54, 福斯中國,2
+55, PPE,3
+56, SSP,2
+57, ID.4,2
+58, 保時捷,4
+59, 零跑,2
+60, 特斯拉,3
+61, L3,2
+62, YouTube,6
+63, Apple,7
+64, Anthropic,4
+65, AI,13
+66, AI公司,4
+67, CRISPR,2
+68, LTR10,2
+69, XRCC4,2
+70, ATG12,2
+71, 科羅拉多大學,2
+72, University of Colorado Boulder,2
+73, Edward Chuong,2
+74, Science Advances,2
+75, Atma Ivancevic,2
+76, Pixababy,2
+77, 民用航空局,2
+78, 經濟部,2
+79, 財政部,2
+80, 國家通訊傳播委員會,2
+81, 數位發展部,2
+82, 林俊良,2
+83, 中央廣播電台,2
+84, AI模型,1
+85, Fair Use Four-Factor Test,1
+86, x86,1
+87, x86-S,1
+88, APX,1
+89,Netflix,1
+90, Apple TV+,1
+91, Statista,1
+92, 好萊塢,1
+93, 迪士尼,1
+94, AMPEE,1
+95, 派拉蒙,1
+96, 華納兄弟探索,1
+97, Disney+,1
+98, 馬丁‧史科西斯,1
+99, 雷利‧史考特,1
+100, 尼爾森,1
+101, HBO,1
+102, App Store,2
+103, Apple Music,1
+104, Apple Arcade,1
+105, 瑞絲‧維絲朋,1
+106, 珍妮佛‧安妮絲頓,1
+107, 大衛芬奇,1
+108, 星際大戰,1
+109, 星際大戰：侍者,1
+110, 星際大戰：安道爾,1
+111, 泰德·拉索：錯棚教練趣事多,1
+112, 人生切割術,1
+113, 輝達,11
+114, Nvidia Corp.,2
+115, 聯準會,3
+116, Fed,4
+117, 鮑爾,4
+118, Jerome Powell,3
+119, 道瓊工業平均指數,1
+120, 那斯達克指數,1
+121, 標準普爾500指數,2
+122, 費城半導體指數,1
+123, 聯邦公開市場委員會,1
+124, FOMC,3
+125, Siebert,2
+126, Mark Malek,2
+127, ADP Research Institute,1
+128, 穆迪分析公司,1
+129, Microsoft,4
+130, 納德拉,1
+131, Satya Nadella,3
+132, Amy Hood,2
+133, 摩根士丹利,3
+134, Morgan Stanley,3
+135, 大摩,1
+136, 超微,5
+137, 蘇姿丰,1
+138, Lisa Su,1
+139, Qualcomm Inc.,2
+140, 美光,4
+141, Micron Technology,2
+142, Inc.,2
+143, 博通,2
+144, Broadcom Corporation,2
+145, 艾司摩爾,1
+146, ASML Holding N.V.,1
+147, Azure,3
+148, 雲端運算,2
+149, 雲計算,2
+150, Meta,6
+151, 祖克柏,2
+152, Mark Zuckerberg,2
+153, LSEG,8
+154, Refinitiv,3
+155, 友達光電,1
+156, 彭双浪,1
+157, BHTC,1
+158, Avocor,1
+159, Avocor Technologies USA,1
+160, Micro LED,1
+161, 柯富仁,1
+162, 和碩,3
+163, 童子賢,1
+164, 魏哲家,1
+165, CNBC,9
+166, Thomson Reuters,1
+167, StreetAccount,2
+168, MarketWatch,3
+169, FactSet,2
+170, 安謀,1
+171, Arm,2
+172, Rene Haas,1
+173, Yahoo Finance,7
+174, 滙豐,1
+175, HSBC,1
+176, Frank Lee.,1
+177,日月光,1
+178, 熊本工廠,1
+179, 製程,2
+180, 台積電熊本一廠,1
+181, 台積電熊本二廠,1
+182, MoneyDJ新聞,7
+183, Audi,1
+184, A6 e-tron,1
+185, Sportback,1
+186, Avant,1
+187, 福斯集團,2
+188, 奧迪,3
+189, e-tron,1
+190, Q4,1
+191, Q6,1
+192, Q8,1
+193, e-tron GT,1
+194, 100kWh,1
+195, 800V,1
+196, Macan,1
+197, Taycan Turbo,1
+198, WLTP,1
+199, Matrix,2
+200, LED,2
+201, OLED,5
+202, Car-to-X,1
+203, Audi A6 e-tron,1
+204, S6 e-tron,1
+205, 路透社,2
+206, Jackson Hole Economic Policy Symposium,1
+207, Meta Platforms,2
+208, GPU,2
+209, H100,1
+210, Blackwell,3
+211, ADR,1
+212, Nancy Pelosi,1
+213, Tesla,3
+214, Unusual Whales,1
+215, iPad,2
+216, iPhone,5
+217, IDC,2
+218, 比亞迪,3
+219, 加拿大,2
+220, 渥太華,1
+221, 拜登,2
+222, 賀錦麗,3
+223, 川普,4
+224, 施羅德,1
+225, 喬治·布朗,1
+226, Joe Manchin,1
+227, Chevron 原則,1
+228, TCJA,1
+229, pixabay,4
+230,羅技,1
+231, Logitech,1
+232, The Verge,1
+233, Decoder,1
+234, ChatGPT,3
+235, HP,1
+236, iFixit,1
+237, B2B,1
+238, B2C,1
+239, SOHO,1
+240, 工艺,1
+241, Albemarle Corp.,1
+242, 雅保,1
+243, 路透,2
+244, Kemerton,1
+245, Kent Masters,1
+246, Berenberg,1
+247, GM,1
+248, MoneyDJ,8
+249, PV+ESS,1
+250, SCADA,1
+251, 台電,2
+252, EMS,1
+253, PCS,1
+254, Amazon,2
+255, Google,13
+256, OpenAI,5
+257, SearchGPT,2
+258, Bing,1
+259, Copilot,1
+260, iOS,3
+261, GPT,1
+262, Siri,2
+263, Sam Altman,1
+264, The Information,2
+265, Applied Materials Inc,1
+266, Chips Act,1
+267, Sunnyvale,1
+268, Kamala Harris,2
+269, Gary Dickerson,1
+270, Boeing,1
+271, FAA,1
+272, Rockwell Collins,1
+273, Kelly Ortberg,1
+274, Dave Calhoun,1
+275, Nic Fink,1
+276, Adam Peaty,1
+277, Nicolo Martinenghi,1
+278, Michael Norment,1
+279, Melanie Margalis Fink,1
+280, Western Digital,1
+281, WD,1
+282, HDD,1
+283, SSD,2
+284, NAND Flash,1
+285,光陽機車,1
+286, Ionex,1
+287, MiG9,1
+288, RevoNex,1
+289, 米蘭車展,1
+290, LiveWire,1
+291, 哈雷機車,1
+292, Microsoft Corp.,1
+293, Advanced Micro Devices,1
+294, D.A. Davidson,1
+295, Gil Luria,1
+296, Intelligent Cloud,1
+297, XTB,1
+298, Kathleen Brooks,1
+299, GRB 221009A,1
+300, NASA,2
+301, 費米伽瑪射線太空望遠鏡,1
+302, 正電子,1
+303, Gamma-Ray Burst,1
+304, GRB,1
+305, Canis Major,1
+306, BOAT,1
+307, 尼爾·格雷爾斯雨燕天文台,1
+308, 荷蘭拉德堡德大學,1
+309, 科學,1
+310, Science,1
+311, Pixel 9,3
+312, Tensor G4,1
+313, Tensor SoC,1
+314, Cortex-A510,1
+315, Cortex-A715,1
+316, Cortex-X3,1
+317, ARMv9.2,1
+318, Cortex-A520,1
+319, Cortex-A720,1
+320, Cortex-X4,1
+321, Geekbench,1
+322, Android Authority,2
+323, Exynos Modem 5400,1
+324, Exynos Modem 5300,1
+325, Mali-G715 GPU,1
+326, Google Blog,1
+327, 大華銀,1
+328, BBB 投資等級美國公司債券 ETF,1
+329, ICE 15 年期以上 BBB 級大型美元公司債券指數,1
+330, 特許通訊,1
+331, 甲骨文,1
+332, 高盛集團,1
+333, 波音,4
+334, 美洲移動,1
+335, 花旗集團,1
+336, 雷神科技,1
+337, 惠普電腦,1
+338, 通用汽車,1
+339, 郭修誠,1
+340, 野村投信,1
+341, 張繼文,1
+342, 台灣高股息指數,1
+343, 台灣趨勢動能高股息指數,1
+344, 野村台灣趨勢動能高股息 ETF,1
+345, 林怡君,1
+346, 任天堂,1
+347, SEGA,1
+348, 瑪利歐與音速小子 AT 奧林匹克運動會,1
+349, Mario & Sonic at the Olympic Games,1
+350, Eurogamer,1
+351, NFT,1
+352, Power Rangers: Battle for the Grid,1
+353, nWay,1
+354, Olympics Go! Paris 2024,1
+355, Olympic Virtual Series,1
+356, Olympic Esports Games,1
+357, Susan Li,1
+358, Evercore ISI,1
+359, Mark Mahaney,1
+360, Alphabet,2
+361, 日本銀行,1
+362, BOJ,1
+363, 植田和男,1
+364, CoinDesk,3
+365, 貝萊德,2
+366, 鴻海,5
+367, Showroom,2
+368, 黃仁勳,1
+369, 巫俊毅,2
+370, 鴻海科技日,1
+371, 豐田汽車,2
+372, Toyota,2
+373, Lexus,1
+374, Counterpoint Research,1
+375, 三星,3
+376, 小米,2
+377, iPhone 14,1
+378, iPhone 13,1
+379, iPhone 15,1
+380, iPhone 15 Pro Max,1
+381, iPhone 15 Pro,1
+382, iPhone 16,2
+383, 華為,5
+384, Touch ID,1
+385, Face ID,1
+386, Apple Watch,1
+387, 美國專利商標局,1
+388, Mac,2
+389,元大台灣,1
+390, 元大投信,1
+391, Bloomberg,1
+392, Vanguard S&P 500 ETF,1
+393, ProShares,2
+394, 納斯達克指數,1
+395, Surface Laptop,1
+396, Snapdragon X Plus,1
+397, Snapdragon Summit,1
+398, IFA 2024,1
+399, 智崴資訊,1
+400, i-Ride TAIPEI,1
+401, 進擊的巨人,1
+402, 歐陽志宏,1
+403, 講談社,1
+404, 古川公平,1
+405, 美國國家再生能源實驗室,1
+406, NREL,1
+407, III-V 族半導體,1
+408, 鈣鈦礦,1
+409, Nature,1
+410, 台達電,2
+411, 鄭平,1
+412, 聯電,2
+413, 日月光投控,3
+414, KC-46,1
+415, Pegasus,1
+416, USAF,1
+417, Kevin Stamey,1
+418, NVIDIA,5
+419, Micron,2
+420, Cristiano Amon,1
+421, Alex Rogers,1
+422, 彭博社,4
+423, SK 海力士,2
+424, Joe Biden,1
+425,The Insider,1
+426, 俄羅斯,2
+427, 台灣,5
+428, 矽晶圓,3
+429, 微晶片,1
+430, 戰鬥機,1
+431, 飛彈,1
+432, ASML,4
+433, 波長,1
+434, 奈米,1
+435, 光罩,1
+436, Mikron,1
+437, Denis Shamiryan,1
+438, Rusnano,1
+439, Crocus NanoElectronics,1
+440, MRAM,1
+441, Epiel,1
+442, OOO Hevel,1
+443, 中國,3
+444, 太陽能電池板,1
+445, 佰皇,1
+446, Pai Haung Technology,1
+447, 台灣合晶科技,1
+448, Wafer Works,1
+449, 鮑永建,1
+450, 經濟部國貿署,1
+451, The Insider,1
+452, 日本央行,2
+453, 日圓,1
+454, 日經 225 指數,1
+455, 富達國際,1
+456, 劉培乾,1
+457, 日本,2
+458, 美國聯準會,1
+459, ASE Japan,1
+460, 北九州市,1
+461, Hibikinokita,1
+462, 熊本廠,1
+463, 矽島,1
+464, 吳田玉,1
+465, 墨西哥,2
+466, 馬來西亞,1
+467, 美國,7
+468, 加州,1
+469, 環旭,1
+470, 北美,1
+471, 三井不動產,1
+472, 台灣陽明交通大學,1
+473, Q18量子預言,1
+474, MODEL C,1
+475, AR 導航,1
+476, 自動駕駛,1
+477, 鴻海研究院,1
+478, ChatGPT Plus,2
+479, GPT-4o,2
+480, Scarlett Johansson,1
+481, Sky,2
+482, 歐洲數位戰略,1
+483, CNDCP,1
+484, Biden,1
+485, 台灣 AI 發展與治理,1
+486, 亞洲矽谷,1
+487, AI基礎建設,1
+488, AI科技普及化,1
+489, AI風險評估體系,1
+490, AI法規,1
+491, AI系統,1
+492, AI治理機制.,1
+493,烏克蘭,1
+494, 俄軍,1
+495, 俄國,1
+496, GPS,1
+497, 范斯,1
+498, 煉油廠,1
+499, 歐洲,1
+500, NBA,1
+501, 布魯克林籃網隊,1
+502, BSE Global,1
+503, 科氏集團,1
+504, 藍池資本,1
+505, Blue Pool Capital,1
+506, Harborside,1
+507, 瑞銀,1
+508, 2024 全球家族辦公室報告,1
+509, Lazada,1
+510, Walmart,1
+511, TikTok,1
+512, 阿里巴巴,1
+513, 蔡崇信,1
+514, 馬雲,1
+515, 張勇,1
+516, 阿里雲,1
+517, 拼多多,1
+518, 菜鳥,1
+519, 速賣通,1
+520, Daraz,1
+521, Laraza,1
+522, 蝦皮,1
+523, ECDB,1
+524, Yahoo,2
+525, GAA製程,1
+526, HPC,4
+527, Sakura Internet,1
+528, H100 GPU,1
+529, 高火力,1
+530, Facebook,2
+531, Moderna,2
+532, Eli Lilly,2
+533, Zepbound,1
+534, Snap,1
+535, Snapchat,1
+536, Instagram,1
+537, eMarketer,1
+538, Jasmine Enberg,1
+539, Pinterest,2
+540,英特爾,3
+541, Mobileye,1
+542, 福斯,2
+543, CPCA,1
+544, EyeQ,1
+545, SuperVision,1
+546, Nissan,1
+547, Honda,1
+548, Ultium,1
+549, Prologue,1
+550, Sony,2
+551, Afeela,1
+552, SDV,1
+553, Ariya,1
+554, Tier1,1
+555, 雪鐵龍,1
+556, 福特,1
+557, 現代汽車,1
+558, Coinbase,2
+559, 比特幣,3
+560, 以太幣,1
+561, ETF,1
+562, Run:ai,1
+563, TechCrunch,2
+564, The Lancet,1
+565, 阿茲海默症,2
+566, 百健,1
+567, Biogen,1
+568, Lecanemab,1
+569, 禮來,1
+570, Donanemab,1
+571, Firmina,1
+572, UTE,1
+573, Microchip Technology Incorporated,1
+574, HubSpot,1
+575, Wiz,1
+576, Assaf Rappaport,1
+577, Constellation Research,1
+578, Chirag Mehta,1
+579, Matthew Eastwood,1
+580, CrowdStrike,2
+581, 達美航空,2
+582, Ed Bastian,1
+583, Flickr,2
+584, Tim CC BY 2.0,1
+585, Politico,1
+586, Matsui Securities,1
+587, Monex Securities Inc.,1
+588, Toshiyuki Kanayama,1
+589, 中芯國際,1
+590, WCCFtech,1
+591, JADA,1
+592, JMVA,1
+593, 大發工業,1
+594, 日產汽車,1
+595,美國,1
+596, 製造業,1
+597, 就業市場,1
+598, 公債,1
+599, 殖利率,1
+600, Facet,1
+601, Tom Graff,1
+602, 美國公債,1
+603, 債市,1
+604, 通膨,1
+605, 經濟,1
+606, DoubleLine Capital,1
+607, Jeffrey Gundlach,1
+608, 聯邦基金利率,1
+609, 芝加哥商業交易所,2
+610, CME,2
+611, FedWatch,2
+612, 聯邦基金期貨,1
+613, 紐約債市,1
+614, Federalreserve,1
+615," CC BY 2.0
+英特爾",1
+616, Intel Corp.,2
+617, 財測,1
+618, 執行長,1
+619, 格爾辛格,1
+620, Moor Insights & Strategy,1
+621, Patrick Moorhead,1
+622, 社交平台X,1
+623, 良率,1
+624, 通過率,1
+625, yield,1
+626, throughput,1
+627, 毛利,1
+628, Tom's Hardware,1
+629, 13代,1
+630, 14代,1
+631, 桌上型電腦,1
+632, OEM,1
+633, Wedbush Securities,1
+634, Matt Bryson,1
+635, Market Domination Overtime,1
+636," MoneyDJ新聞
+AI",1
+637, 薪資,1
+638, 半導體,1
+639, 聯發科,3
+640, 科技業,1
+641, 威旭資訊,1
+642, 台成清交,1
+643, 石毓璟,1
+644, 低延遲高頻量化交易,1
+645, 量化研究,1
+646, 軟硬體整合,1
+647, C++,1
+648, FPGA,1
+649, Python,1
+650, R,1
+651, 金融計量,1
+652, AI 工程師,1
+653, 愛酷智能科技,1
+654, 林庭箴,1
+655, MarTech,1
+656, 台大,2
+657, 資管,1
+658, 孔令傑,1
+659, 台大電機系,1
+660, 生成式人工智慧導論,1
+661, PMBA,1
+662, 大數據分析,1
+663," 人工智慧
+蘋果",1
+664, WWDC,1
+665, Apple Intelligence,4
+666, 庫克,1
+667, iOS 18,1
+668," iOS 19
+國際半導體產業協會",1
+669, SEMI,1
+670, 環球晶,1
+671, 台勝科,1
+672, 合晶,1
+673, HBM,1
+674, CoWoS,4
+675, 先進製程,1
+676," 先進封裝
+極端氣候",1
+677, 地球,1
+678, 物種,1
+679, 滅絕,1
+680, 登月計畫,1
+681, 挪威,1
+682, 斯瓦爾巴群島,1
+683, 全球種子庫,1
+684, 史密森尼國家動物園,1
+685, 保育生物學研究所,1
+686, 加州大學聖克魯斯分校,1
+687, 星空蝦虎魚,1
+688, 月球,1
+689," 生物科學
+中國",1
+690, 面板,1
+691, LG 顯示,1
+692, LG Display,1
+693, TCL,1
+694, 華星光電,1
+695, BusinessKorea,1
+696, IPS,1
+697, Samsung Display,1
+698, 京東方,3
+699," MoneyDJ新聞
+高齡健康產業博覽會",1
+700, 世貿一館,1
+701, 仁寶,1
+702, 宏碁,2
+703, 長佳智能,1
+704, 華碩,1
+705, 中華電信,1
+706, 遠傳電信,1
+707, 中保科,1
+708, 銀髮族,1
+709, 宏碁智醫,1
+710, 智骨篩,1
+711, 憂可視腦波壓力評估系統,1
+712, 腦出血檢測系統,1
+713, 心電圖分析軟體,1
+714, ASUS HealthHub,1
+715, 是方 i 健康 App,1
+716, Health 健康+ App,1
+717, 日勝生樂齡宅,1
+718, 樂陶居,1
+719, 橘青春,1
+720," 中保無限+ 家庭守護服務
+ION",1
+721, 固態電池,1
+722, ION Storage Systems,1
+723, ISS,1
+724, Saint-Gobain,1
+725, KLA,1
+726, ARPA-E,1
+727," QuantumScape
+亞馬遜",1
+728, Temu,1
+729, Shein,1
+730, Brian Olsavsky,1
+731, AWS,3
+732, Amazon Web Services,1
+733," Meta
+A117uUD",1
+734, 彗星,1
+735, 土星,1
+736, ATLAS 系統,1
+737, C/1980 E1,1
+738, 木星,1
+739," pixabay
+TCL 科技集團",1
+740, 樂金顯示,1
+741, TrendForce,4
+742, 惠科光電,1
+743, 夏普,1
+744, Gen10,1
+745, Therese Poletti,1
+746, 亞馬遜,2
+747, Amazon.com,1
+748, Walgreens Boots Alliance Inc.,1
+749, S&P Dow Jones Indices,1
+750, Tirias Research,1
+751, Kevin Krewell,1
+752, CPU,1
+753, Gaudi 3,1
+754, MI300,1
+755, 聯合健康保險,1
+756, UnitedHealth,1
+757, 晶相光,1
+758, 宏捷科,1
+759, Donald Trump,2
+760, RealClearPolitics,1
+761, 賓州,1
+762, Nashville,1
+763, Bitcoin 2024,1
+764, CoinGecko,1
+765, Seeking Alpha,1
+766, Coin Metrics,1
+767, 康寧,1
+768, Wendell P. Weeks,1
+769, 流明科技,1
+770, Lumen Technologies,1
+771, Springboard,1
+772, RE100,1
+773, 中華大學,1
+774, 清華大學,2
+775, Intel 10A,1
+776, Intel 14A,1
+777, Intel 4,1
+778, intel 3,1
+779, IFS Direct Connect,1
+780, PTT,1
+781, High NA EUV,1
+782, 群創,2
+783, 南茂,1
+784, Android,2
+785, BleepingComputer,1
+786, BingoMod,1
+787, Clafy,1
+788, Google Play,1
+789, AVG AntiVirus & Security,1
+790, VNC,1
+791, Cleafy,1
+792, 天璣 9400,2
+793, Snapdragon 8 Gen 4,2
+794, 蔡力行,2
+795, ARM,1
+796, BlackHawk,1
+797, vivo,1
+798, 集邦科技,1
+799, EVOX,1
+800, Flexsystem,1
+801, 博弘雲端,1
+802, IKEA,1
+803, 雀巢,1
+804, 城市車旅,1
+805, 迴轉壽司,1
+806, IT,1
+807, FlexSystem,1
+808, ERP,1
+809, 明泰,1
+810, 台股,1
+811, 中國信託投信,1
+812, 華爾街,1
+813, GIM,1
+814, 保德信,1
+815, S&P 500,1
+816, 柯鴻旼,1
+817,蘋果,1
+818, 騰訊,1
+819, 字節跳動,1
+820, 微信,1
+821, 抖音,2
+822, 歐盟委員會,1
+823, 亞洲物聯網聯盟,1
+824, 李國憲,1
+825, 清大,1
+826, 成大,1
+827, 政大,1
+828, 中央大學,1
+829, Generative AI,1
+830, 陽明交大,1
+831, 台科大,1
+832, 北科大,1
+833, Chrome,1
+834, Gemini,1
+835, Google Lens,1
+836, Tab Compare,1
+837, PNAS Nexus,1
+838, DEET,1
+839, 新唐,1
+840, 蘇源茂,1
+841, MA35D0,1
+842, ISO 24089,1
+843, TOF sensor,1
+844, John LoSecco,1
+845, PPTA2,1
+846, NANOGrav,1
+847, 倉和,1
+848, 加州大學洛杉磯分校,1
+849, UCLA,1
+850, Advanced Photonics,1
+851, Aydogan Ozcan,1
+852, Trader Joe′s,1
+853, Everything But the Bagel,1
+854, Papaver Somniferum L,1
+855, 華盛頓郵報,1
+856, 康朱恩,1
+857, Gilbert Cisneros,1
+858, USADA,1
+859, 新加坡,1
+860, 阿聯酋,1
+861, 沙烏地阿拉伯,1
+862, 毅力號,1
+863, Cheyava Falls,1
+864, SHERLOC,1
+865, Mastcam-Z,1
+866, PIXL,1
+867, 科林研發,1
+868, Lam Research,1
+869, Lam Cyro 3.0,1
+870, Sesha Varadarajan,1
+871, Kioxia,1
+872, Fab 2,1
+873, 威騰,1
+874, Jun Young-hyun,1
+875, HBM3,1
+876, HBM3E,1
+877, Intel,1
+878, MPS,1
+879, PPT,1
+880, VIX,1
+881, Cboe,2
+882, Chicago Board Options Exchange Volatility Index,1
+883, iPadOS,2
+884, tvOS,1
+885, macOS Sequoia,2
+886, watchOS,2
+887, Tim Cook,2
+888, Family Link,1
+889, Fitbit Ace LTE,1
+890, Samsung Galaxy,1
+891, School Time,1
+892, Google 部落格,1
+893, Emma Higham,1
+894, Unwire HK,1
+895, 慧榮科技,1
+896, eMMC,1
+897, UFS,1
+898, 苟嘉章,1
+899, NAND,1
+900, 華邦電,1
+901, DDR4,1
+902, LPDDR4,1
+903, NOR,1
+904, SLC NAND Flash,1
+905, DRAM,1
+906, Z 世代,1
+907, 台灣大學,1
+908, 陽明交通大學,1
+909, 彭冠宇,1
+910, STEM,1
+911, ESG,2
+912, 今周刊,1
+913,黃仁勳,1
+914, 台新金,1
+915, 新光金,1
+916, 中信金,1
+917, 國泰金控,1
+918, 蔡鎮宇,1
+919, 京城銀,1
+920, 安泰銀,1
+921, 財訊,3
+922, Google搜尋趨勢,1
+923, 貝恩管顧,1
+924, Bain & Company,1
+925, 2024年上半年併購報告,1
+926, 倫敦證交所,1
+927, Global Investment Banking Quarterly Review,1
+928, BPEA八號私募股權基金,1
+929, BPEA Private Equity Fund VIII,1
+930, Perficient,1
+931, 資誠會計師事務所,1
+932, 2024台灣併購白皮書,1
+933, 普華國際財務顧問公司,1
+934, 周容羽,1
+935, 東京證券交易所,1
+936, 安侯建業,1
+937, 張維夫,1
+938, 麥當勞,1
+939, Business Insider,1
+940, Chris Kempczinski,1
+941, US index of food consumed away from home,1
+942, LendingTree,1
+943, Joe Erlinger,1
+944, Thales Alenia Space,1
+945, 華爾街日報,1
+946, ASCEND,1
+947, IEA,1
+948, Loft Orbital,1
+949, 國立中央大學,1
+950, 張貴雲,1
+951, 遠見,1
+952, Hebbia,1
+953, a16z,1
+954, Peter Thiel,1
+955, MacRumors,2
+956, 郭明錤,2
+957, Ismail Haniyeh,1
+958, Masoud Pezeshkian,1
+959, Ali Khamenei,1
+960, Mossad,1
+961, 林肯號航母戰鬥群,1
+962, F-15E,1
+963, RAF Lakenheath,1
+964, Seymour Johnson AFB,1
+965, 伯克級神盾驅逐艦,1
+966,美國陸軍,1
+967, 貝爾德士隆,1
+968, 未來長程突擊機,1
+969, 黑鷹直升機,1
+970, 未來直升機,1
+971, Future Vertical Lift,1
+972, FVL,1
+973, Future Long-Range Assualt Aircraft,1
+974, FLRAA,1
+975, V-22 魚鷹式,1
+976, Osprey,1
+977, V-280 英勇式,1
+978, Valor,1
+979, 賽考斯基,1
+980, Sikorsky,1
+981, SB-1 反抗者 X,1
+982, Defiant X,1
+983, 布希,1
+984, Doug Bush,1
+985, Danazar,1
+986," Wikimedia Commons
+
+荷爾蒙調節療法",1
+987, Hormone modulating therapy,1
+988, JAMA Network Open,1
+989, 雌激素受體陽性,1
+990, estrogen receptor positive,1
+991, Francesmary Modugno,1
+992, 匹茲堡大學,1
+993, 南卡羅萊納大學,1
+994, Chao Cai,1
+995, 美國聯邦資料庫,1
+996," Unsplash
+
+墨子",1
+997, 克卜勒,1
+998, 針孔成像,1
+999, 暗箱,1
+1000, 行星運動定律,1
+1001, 太陽黑子,1
+1002, 名古屋大學,1
+1003, 早川尚志,1
+1004, 史波勒定律,1
+1005, 蒙德極小期,1
+1006, 台北天文館,1
+1007," NASA
+
+輝達",1
+1008, Blackwell 晶片,1
+1009," 台積電
+
+中華精測",1
+1010, 智慧型手機,1
+1011, 超高速運算,1
+1012, 資策會產業情報研究所,1
+1013, MIC,1
+1014, AIoT,1
+1015, BKS 系列,1
+1016," 美系客戶
+
+萬達寵物",1
+1017, IPO,1
+1018, 李俊廣,1
+1019, 羅至玄,1
+1020, 台灣寵物通路,1
+1021, 克緹集團,1
+1022, 陳樂維,1
+1023, 寵物公園,1
+1024," PetPark
+
+迅銷公司",1
+1025, 優衣庫,1
+1026, UNIQLO,1
+1027, 潘寧,1
+1028, ZARA,1
+1029, Inditex,1
+1030," 齊藤孝浩
+
+月經貧窮",1
+1031, 《華爾街日報》,1
+1032, Harvard Public Health,1
+1033, 尼爾森IQ,1
+1034, Nielsen IQ,1
+1035, U by Kotex,1
+1036, 楊百翰大學,1
+1037, Brigham Young University,1
+1038, DW,1
+1039, Sierra Club,1
+1040," University of Notre Dame
+
+輝達",1
+1041, 美超微,1
+1042, SMCI,1
+1043, 台灣科技大廠,1
+1044, 雲豹能源,1
+1045, 泓德能源,1
+1046, 森崴能源,1
+1047, GB200伺服器,1
+1048, 翔耀實業,1
+1049, 是方電訊,1
+1050, VMFIVE,1
+1051, AICA,1
+1052, AI Computing Alliance,1
+1053, 天能綠電,1
+1054, 星星電力,1
+1055, 富威電力,1
+1056, 博仲法律事務所,1
+1057, 遠見雜誌,1
+1058,金管會,1
+1059, 財金資訊,1
+1060, AI TAIWAN 2024,1
+1061, TWQR,1
+1062, 街口支付,1
+1063, 一卡通 MONEY,1
+1064, 悠遊付,1
+1065, 全支付,1
+1066, 全盈+PAY,1
+1067, 范庭甄,1
+1068, 悠遊卡,1
+1069, 李志仁,1
+1070, 台北捷運,1
+1071, 高雄捷運,1
+1072, 韓國,1
+1073, 經理人月刊,1
+1074, 茱蒂·丹契,1
+1075, 奧卡菲娜,1
+1076, 基根-麥可·凱,1
+1077, SAG-AFTRA,1
+1078, 史嘉蕾·喬韓森,1
+1079, Juniper,1
+1080, Breeze,1
+1081, Cove,1
+1082, Ember,1
+1083, 日月光,1
+1084, 力成,1
+1085, 矽品,1
+1086, SoC,1
+1087, InFO,1
+1088, FOWLP,1
+1089, FOPLP,1
+1090, NXP,1
+1091, STMicroelectronics,1
+1092, 新台幣,2
+1093, 統一超商,1
+1094, 桃園航空城,1
+1095, BOO,1
+1096, 全家,1
+1097, 富邦人壽,1
+1098, 大園航空城,1
+1099, 新竹縣湖口鄉,1
+1100, 商業署,1
+1101, 富邦集團,1
+1102, 富邦媒體,1
+1103, 鉅亨買基金,1
+1104, ISM,1
+1105, PMI,1
+1106, Galaxy Watch Ultra,1
+1107, Galaxy Buds 3 Pro,1
+1108, Apple Watch Ultra,1
+1109, AirPods Pro 2,1
+1110, 李在鎔,2
+1111, Wear OS,1
+1112, Aju News,1
+1113, 澤連斯基,1
+1114, F-16,1
+1115, 法新社,1
+1116, 洛克希德馬丁,2
+1117, 巴菲特,1
+1118, 波克夏海瑟威,1
+1119, 美銀,1
+1120, 泰德·韋施勒,1
+1121, 托德·庫姆斯,1
+1122, BofA,1
+1123, Fortune Live Media,1
+1124,台股,1
+1125, 加權指數,1
+1126, 費半指數,1
+1127, 新秀麗,1
+1128, Samsonite,1
+1129, 杜塔,1
+1130, Subrata Dutta,1
+1131, 江錫毅,1
+1132, 林福平,1
+1133, 林淑娟,1
+1134, 黃志聖,1
+1135, 小紅書,1
+1136, Crown,1
+1137, 航天科技集團,1
+1138, China Rocket,1
+1139, SIA,1
+1140, Northrop Grumman,1
+1141, SpaceX,1
+1142, 美國國家偵查局,1
+1143, 三菱重工,1
+1144, 愛國者飛彈,1
+1145, Nicola Rooney,1
+1146, University of Bristol,1
+1147, Scientific Reports,1
+1148, TradingView,1
+1149, 埃及,1
+1150, 阿爾及利亞,1
+1151, 約旦,1
+1152, 歐盟執委會,1
+1153, Perplexity,1
+1154,中國,1
+1155, 北京,1
+1156, 大眾,1
+1157, BMW,1
+1158, 寶馬,1
+1159, 賓士,1
+1160, 奔馳,1
+1161, 豐田,1
+1162, 本田,1
+1163, 奇瑞汽車,1
+1164, Tiggo,1
+1165, 吉利,1
+1166, 長安,1
+1167, 理想汽車,1
+1168, 問界,1
+1169, SU7,1
+1170, VIX指數,2
+1171, 芝加哥選擇權交易所,1
+1172, 美國勞工部,1
+1173, New York State Common Retirement Fund,1
+1174, Pensions & Investments,1
+1175, Delta Air Lines,1
+1176, David Boies,1
+1177, 騰訊音樂娛樂集團,1
+1178, 三竹資訊,2
+1179, CoLine,2
+1180, Open API,1
+1181, Excel,1
+1182,任天堂,1
+1183, Nintendo,1
+1184, 薩爾達傳說 王國之淚,1
+1185, 大立光,1
+1186, 玉晶光,1
+1187, M1,1
+1188, Gen-AI,1
+1189, 工業富聯,1
+1190, iPhone 16 Pro/Pro Max,1
+1191, A18,1
+1192, 景碩,1
+1193, 南電,1
+1194, 欣興,1
+1195, 國巨,1
+1196, 臻鼎-KY,1
+1197, 華通,1
+1198, 穩懋,1
+1199, 天風國際證券,1
+1200, A19,1
+1201, 5G,1
+1202, Samsung Electronics,1
+1203, 韓聯社,1
+1204, Rishi Sunak,1
+1205, 愛丁堡大學,1
+1206, DSIT,1
+1207, Rachel Reeves,1
+1208, Keir Starmer,1
+1209, ERIC,1
+1210, Russell Napier,1
+1211, Solid Ground,1
+1212, Jeff Bezos,1
+1213, Barron’s,1
+1214, 10b5-1,1
+1215, Forbes,1
+1216, Elon Musk,1
+1217, J.D. Vance,1
+1218, EV,1
+1219, Made by Google,2
+1220, Uber,1
+1221, Uber Eats,1
+1222, Foodpanda,1
+1223, 蔣念祖,1
+1224, 王立達,1
+1225, 王偉霖,1
+1226, 鄭嘉逸,1
+1227, 錢櫃,1
+1228, 好樂迪,1
+1229, 統一,1
+1230, 維力,1
+1231,凱薩琳伍德,1
+1232, Cathie Wood,1
+1233, 莫德納,1
+1234, ARK,1
+1235, ARKK,1
+1236, ARKF,1
+1237, Roblox,1
+1238, Caroline Wood,1
+1239, Wikimedia Commons,1
+1240, 日經225指數,1
+1241, 東證股價指數,1
+1242, TOPIX,1
+1243, 熊市,1
+1244, 熔斷機制,1
+1245, Circuit Breaker,1
+1246, 美元,1
+1247, 英偉達,1
+1248, GB200,1
+1249, Pixel 8,1
+1250, Pixel 8 Pro,1
+1251, Pixel 9 Pro,1
+1252, Pixel 9 Pro XL,1
+1253, Pixel 9 Pro Fold,1
+1254, 9to5Google,1
+1255, Galaxy S24 Ultra,1
+1256, Charlie McElligott,1
+1257, 野村證券,1
+1258, ISM製造業指數,1
+1259, 薩姆規則,1
+1260, Sahm rule,1
+1261, José Torres,1
+1262, Interactive Brokers,1
+1263, CNN恐懼貪婪指數,1
+1264, CNN Fear & Greed Index,1
+1265, 高效能運算,1
+1266, 崇越科技,1
+1267, 潘重良,1
+1268, 熊本,1
+1269, 德州,1
+1270, M2 iPad Pro,1
+1271, AppleLeaker,1
+1272, Galaxy AI,1
+1273, Apple Watch SE,1
+1274, Apple Watch Series 9,1
+1275, 埃克森美孚,1
+1276, Exxon Mobil,1
+1277, 先鋒自然資源,1
+1278, Pioneer Natural Resources,1
+1279, 蓋亞那,1
+1280, Guyana,1
+1281, 二疊紀盆地,1
+1282, Permian Basin,1
+1283, Investopedia,1
+1284, NYMEX,1
+1285, ICE Futures Europe,1
+1286, 淡江大學,1
+1287, Polaris,1
+1288, RNX,1
+1289, OLEDoS,1
+1290, LCD,1
+1291, VR,1
+1292, MR,1
+1293, AR,1
+1294, Vision Pro,1
+1295, 視涯,1
+1296, 信邦,1
+1297, 順達,1
+1298, 創意,1
+1299, 智邦,1
+1300, 泰鼎-KY,1
+1301, Vivo X200,1
+1302, ARM BlackHawk CPU,1
+1303, Snapdragon 8 Gen 3,1
