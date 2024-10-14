@@ -1,0 +1,93 @@
+import os
+from collections import Counter
+
+import pandas as pd
+import tiktoken
+from openai import OpenAI
+from pydantic import BaseModel
+
+client = OpenAI()
+
+class TermsStructure(BaseModel):
+    proper_nuons : list[str]
+
+def read_csv(path):
+    df = pd.read_csv(path)
+    content = df["content"]#.str.strip()
+    return content 
+
+def batch(model, max_token, content_list):
+    enc = tiktoken.encoding_for_model(model)
+    batch_list = []
+    current_batch = ""
+    current_token = 0
+    for content in content_list:
+        content_token = len(enc.encode(content))
+        if current_token + content_token > max_token:
+            batch_list.append(current_batch)
+            current_batch = ""
+            current_token = 0
+        current_batch += content.strip() + "\n***\n"
+        current_token += content_token
+    if current_batch:
+        batch_list.append(current_batch)
+    return batch_list
+
+
+def extract_tech_terms(content, model):
+    try:
+        complition = client.beta.chat.completions.parse(
+            model=model,
+            messages=[
+                {"role": "system",
+                "content": "You are a model that extracts all proper nouns, technical terms, and other nouns that have different expressions in \
+                        Simplified and Traditional Chinese. The input consists of multiple articles separated by the delimiter '***'. Please ensure that \
+                        you accurately extract terms from each article, recognizing this delimiter as the boundary between different articles. \
+                        For example, for 'Nvidia', you should return '英伟达' and '輝達'. Additionally, include terms like '製程' and '工艺', \
+                        or '雲端運算' and '雲計算'. Focus on capturing brand names, company names, product names, and any other relevant terms, \
+                        returning only the extracted terms without any additional explanation."},
+                {"role": "user", "content":f"Here are some articles separated by '***':{content}"}
+            ],
+            temperature=0,
+            top_p=1,
+            seed=2,
+            response_format=TermsStructure,
+        )
+        return complition.choices[0].message.parsed
+    except Exception as e:
+            print(f"Error extracting terms: {e}")
+            return TermsStructure(proper_nuons=[])  # 返回空的 TermsStructure
+
+def extract_list(terms_str):
+    terms_str = terms_str.split(",", 1)[1].rstrip(')')
+    terms_list = eval(terms_str)
+    return terms_list
+
+def save_csv(path, terms):
+    if not os.path.exists(path) or os.path.getsize(path) == 0:
+        mode = 'w'
+    else: 
+        mode = 'a'
+    terms = dict(Counter(terms))
+    print(terms)
+    df = pd.DataFrame(list(terms.items()), columns=['名詞', '數量'])
+    df.to_csv(path, mode=mode)
+
+def main():
+    model = "gpt-4o"
+    max_token = 3000
+    read_path = 'tech_news/technews-08.csv'
+    save_path = 'tech_news/terms.csv'
+    terms_list = []
+    contents = read_csv(read_path)
+    print(contents.str.len().sum())
+    batch_list = batch(model, max_token, contents)
+    print(sum(len(batch) for batch in batch_list))
+    for cont in batch_list:
+        terms_str = extract_tech_terms(cont, model)
+        terms = terms_str.proper_nuons
+        terms_list.extend(terms)
+    save_csv(save_path, terms_list)
+
+if __name__ == "__main__":
+    main()
