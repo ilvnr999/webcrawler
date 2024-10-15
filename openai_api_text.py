@@ -9,7 +9,7 @@ client = OpenAI()
 
 def read_csv(path):
     df = pd.read_csv(path)
-    content = df["Content"]
+    content = df["content"]
     return content 
 
 def batch(model, max_token, content_list, prompt):
@@ -50,18 +50,28 @@ def extract_tech_terms(content, model, prompt):
     return response.choices[0].message.content.strip(), prompt_tokens, completion_tokens, total_tokens
 
 def split_terms(terms_str):
-    terms = [s.strip().split(':') for s in terms_str.split(",")]
-    return terms
+    terms_raw = terms_str.split(",")
+    terms = []
+    error = []
+    for s in terms_raw:
+        cleaned_s = s.strip()
+        split_terms = cleaned_s.split(':')
+        if len(terms) <= 3:
+            terms.append(split_terms)
+        else :
+            terms.append(error)    
+    return terms, error
 
 def save_csv(path, terms):
     if not os.path.exists(path) or os.path.getsize(path) == 0:
         mode = 'w'
+        df = pd.DataFrame(terms, columns=['英文', '繁中', '簡中'])
     else: 
         mode = 'a'
     #terms = dict(Counter(terms))
     #print(terms)
     #df = pd.DataFrame(list(terms.items()), columns=['名詞', '數量'],)
-    df = pd.DataFrame(terms, columns=['英文', '繁中', '簡中'], )
+        df = pd.DataFrame(terms)
     df.to_csv(path, mode=mode, index=False)
 
 def main():
@@ -77,11 +87,11 @@ def main():
             The output should format each term by first providing the English term, followed by a colon, \
             then the Traditional Chinese term with another colon, and finally the Simplified Chinese term. \
             The output should be formatted as follows: Each term should be presented in the format \
-            'English: Traditional Chinese: Simplified Chinese'. Please ensure there are no numbers or additional \
-            text in the output.Different proper nouns should be separated by commas."
+            'English: Traditional Chinese: Simplified Chinese'. Please ensure there are no numbers or additional text in the output. Different \
+            proper nouns should be separated by commas, and between each pair of commas, there should only be two colons separating the three terms."
     max_token = 8000
-    read_path = 'csv/line_api.csv'
-    save_path = 'tech_news/terms_translate.csv'
+    read_path = 'tech_news/technews-08_2.csv'
+    save_path = 'tech_news/terms_translate3.csv'
     terms_list = []
     contents = read_csv(read_path)
     print(contents.str.len().sum())
@@ -90,9 +100,10 @@ def main():
     for cont in batch_list:
         terms_str, prom_token, re_token, tot_token = extract_tech_terms(cont, model, prompt)
         print(prom_token, re_token, tot_token)
-        print("terms_str:", terms_str)
-        terms = split_terms(terms_str)
-        print("terms after split:",terms)
+        print("terms_str:\n", terms_str)
+        terms, error = split_terms(terms_str)
+        print("terms after split:\n",terms)
+        print("more than three elements:\n")
         terms_list.extend(terms)
     save_csv(save_path, terms_list)
 

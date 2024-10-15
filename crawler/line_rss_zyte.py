@@ -2,7 +2,6 @@ import csv
 
 import requests
 from bs4 import BeautifulSoup
-
 from line_url import fetch
 
 url_content = []
@@ -54,7 +53,7 @@ def grab():
     fieldnames = list(url_content[0].keys())
     print('column names',fieldnames)
 
-    csv_name = 'csv/line_api.csv'
+    csv_name = '../csv/line_api.csv'
     with open(csv_name, 'w', encoding='utf-8', newline='') as file_obj:
         writer = csv.DictWriter(file_obj, fieldnames=fieldnames)
         writer.writeheader()

@@ -1,6 +1,6 @@
 import pandas as pd
 
-fn = 'csv/line_new2.csv'
+fn = '../csv/line_new2.csv'
 # 讀取 CSV 文件
 df = pd.read_csv(fn)
 

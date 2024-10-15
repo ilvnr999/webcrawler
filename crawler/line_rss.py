@@ -3,9 +3,8 @@ import csv
 import time
 
 from bs4 import BeautifulSoup
-from selenium import webdriver
-
 from line_url import fetch
+from selenium import webdriver
 
 
 def grab(cat, url):
@@ -55,7 +54,7 @@ def save():
     fieldnames = list(url_content[0].keys())
     print('column names', fieldnames)
 
-    csv_name = 'csv/line_new2.csv'
+    csv_name = '../csv/line_new2.csv'
     with open(csv_name, 'w', encoding='utf-8', newline='') as file_obj:
         writer = csv.DictWriter(file_obj, fieldnames=fieldnames)
         writer.writeheader()
