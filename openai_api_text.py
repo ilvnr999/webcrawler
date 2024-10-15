@@ -56,20 +56,25 @@ def save_csv(path, terms):
         mode = 'a'
     terms = dict(Counter(terms))
     print(terms)
-    df = pd.DataFrame(list(terms.items()), columns=['名詞', '數量'])
+    df = pd.DataFrame(list(terms.items()), columns=['名詞', '數量'],index=False)
     df.to_csv(path, mode=mode)
 
 def main():
     model = "gpt-4o"
-    prompt = "You are a model that extracts all proper nouns, technical terms, and other nouns that have different expressions in Simplified \
-            and Traditional Chinese. The input consists of multiple articles separated by the delimiter ' '. Please ensure that you accurately \
-            extract terms from each article, recognizing this delimiter as the boundary between different articles. For example, for ‘Nvidia’, \
-            you should return ‘英伟达’ and ‘輝達’. Additionally, include terms like ‘製程’ and ‘工艺’, or ‘雲端運算’ and ‘雲計算’. \
-            Focus on capturing brand names, company names, product names, and any other relevant terms, returning only the extracted terms. \
-            Each proper noun must be separated by a comma."
+    prompt = "You are a model that extracts all proper nouns, technical terms, and other nouns that have different expressions in Simplified and \
+            Traditional Chinese. The input consists of multiple articles separated by the delimiter ' '. Please ensure that you accurately extract \
+            terms from each article, recognizing this delimiter as the boundary between different articles. For example, for ‘Nvidia’, you should \
+            return ‘英偉達’ and ‘輝達’. Additionally, include terms like ‘製程’ and ‘工藝’, or ‘雲端運算’ and ‘雲計算’.\
+            After extracting the terms, translate based on the context:\
+            - If the term is in English, translate it into Traditional Chinese and Simplified Chinese.\
+            - If the term is in Traditional Chinese, translate it into English and Simplified Chinese.\
+            - If the term is in Simplified Chinese, translate it into English and Traditional Chinese.\
+            The output format should be:\
+            English: Traditional Chinese: Simplified Chinese\
+            Different proper nouns should still be separated by commas."
     max_token = 8000
     read_path = 'tech_news/technews-08_1.csv'
-    save_path = 'tech_news/terms_1-2.csv'
+    save_path = 'tech_news/terms_translate.csv'
     terms_list = []
     contents = read_csv(read_path)
     print(contents.str.len().sum())
